@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeType.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Descriptor.cs" />
     <Compile Include="IContextHandler.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="xacml-core-v3-schema-wd-17.cs">
       <DependentUpon>xacml-core-v3-schema-wd-17.xsd</DependentUpon>
     </Compile>
+    <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="xacml-core-v3-schema-wd-17.xsd">

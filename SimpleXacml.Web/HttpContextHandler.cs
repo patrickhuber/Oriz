@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+
 
 namespace SimpleXacml.Web
 {
@@ -14,12 +17,16 @@ namespace SimpleXacml.Web
             this.httpContext = httpContext;
         }
 
-        public IDictionary<string, string> GetContext()
+        public IEnumerable<AttributeType> GetContext()
         {
-            Dictionary<string, string> context = new Dictionary<string, string>();
-            
-            
-            return context;
+            var attributeList = new List<AttributeType>() 
+            {
+                new AttributeType(
+                    Constants.Identifiers.Resource.ResourceId,
+                    Constants.DataTypes.AnyUri, 
+                    httpContext.Request.Url.AbsolutePath)
+            };
+            return attributeList;
         }
     }
 }

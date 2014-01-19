@@ -7,6 +7,6 @@ namespace SimpleXacml
 {
     public interface IContextHandler
     {
-        IDictionary<string, string> GetContext();
+        IEnumerable<AttributeType> GetContext();
     }
 }
