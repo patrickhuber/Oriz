@@ -7,5 +7,6 @@ namespace Xacml.Web
 {
     public interface IHttpApplication
     {
+        void CompleteRequest();
     }
 }

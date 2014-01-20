@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpApplicationAdapter.cs" />
     <Compile Include="HttpContextAdapter.cs" />
     <Compile Include="HttpContextHandler.cs" />
     <Compile Include="HttpRequestAdapter.cs" />
     <Compile Include="HttpResponseAdapter.cs" />
+    <Compile Include="IHttpApplication.cs" />
     <Compile Include="IHttpContext.cs" />
     <Compile Include="IHttpRequest.cs" />
     <Compile Include="IHttpResponse.cs" />
