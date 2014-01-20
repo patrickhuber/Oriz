@@ -14,23 +14,34 @@ namespace Xacml.Web
 
         public void Init(HttpApplication app)
         {
-            app.AuthorizeRequest += this.OnEnter;
+            app.AuthorizeRequest += this.OnAuthorizeRequest;
         }
 
-        private void OnEnter(object source, EventArgs e)
+        private void OnAuthorizeRequest(object source, EventArgs e)
         {
             HttpContext context = ((HttpApplication)source).Context;
-            if (context.SkipAuthorization)
+            OnAuthorizeRequest(new HttpContextAdapter(context));
+        }
+
+        public void OnAuthorizeRequest(IHttpContext httpContext)
+        {
+            if (httpContext.SkipAuthorization)
             {
-                if (context.User != null && context.User.Identity.IsAuthenticated)
+                if (httpContext.User != null && httpContext.User.Identity.IsAuthenticated)
                 {
-                    return;                    
+                    return;
                 }
             }
-            else 
+            else
             {
-                var contextAdapter = new HttpContextAdapter(context);
-                var contextHandler = new HttpContextHandler(contextAdapter);
+                var contextHandler = new HttpContextHandler(httpContext);
+                var polcyEnforcementPoint = new PolicyEnforcementPoint();
+                var accessResponse = polcyEnforcementPoint.RequestAccess(contextHandler);
+                if (!accessResponse.IsAuthorized)
+                {
+                    httpContext.Response.StatusCode = 401;
+                    httpContext.Response.End();
+                }
             }
         }
     }

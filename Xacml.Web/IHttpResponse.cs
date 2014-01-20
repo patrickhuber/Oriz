@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xacml
+namespace Xacml.Web
 {
-    public class AccessRequest
+    interface IHttpResponse
     {
     }
 }

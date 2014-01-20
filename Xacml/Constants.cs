@@ -82,7 +82,6 @@ namespace Xacml
 
         public static class Functions
         {
-            private static readonly string OasisNamespace = "urn:oasis:names:tc:xacml";
             private static readonly string Function = "function:";
             private static readonly string FunctionV1 = V1 + Function;
             private static readonly string FunctionV2 = V2 + Function;
@@ -423,8 +422,8 @@ namespace Xacml
                 public static readonly string PermitOverrides = V3 + RuleCombiningToken + AlgorithmPermitOverrides;
                 public static readonly string FirstApplicable = V3 + RuleCombiningToken + AlgorithmFirstApplicable;
                 public static readonly string OnlyOneApplicable = V3 + RuleCombiningToken + AlgorithmOnlyOneApplicable;
-                public static readonly string OrderedDenyOverrides = V3 + RuleCombiningToken + AlgorithmDenyOverrides;
-                public static readonly string OrderedPermitOverrides = V3 + RuleCombiningToken + AlgorithmPermitOverrides;
+                public static readonly string OrderedDenyOverrides = V3 + RuleCombiningToken + AlgorithmOrderedDenyOverrides;
+                public static readonly string OrderedPermitOverrides = V3 + RuleCombiningToken + AlgorithmOrderedPermitOverrides;
                 public static readonly string DenyUnlessPermit = V3 + RuleCombiningToken + AlgorithmDenyUnlessPermit;
                 public static readonly string PermitUnlessDeny = V3 + RuleCombiningToken + AlgorithmPermitUnlessDeny;
             }
@@ -436,8 +435,8 @@ namespace Xacml
                 public static readonly string PermitOverrides = V3 + PolicyCombiningToken + AlgorithmPermitOverrides;
                 public static readonly string FirstApplicable = V3 + PolicyCombiningToken + AlgorithmFirstApplicable;
                 public static readonly string OnlyOneApplicable = V3 + PolicyCombiningToken + AlgorithmOnlyOneApplicable;
-                public static readonly string OrderedDenyOverrides = V3 + PolicyCombiningToken + AlgorithmDenyOverrides;
-                public static readonly string OrderedPermitOverrides = V3 + PolicyCombiningToken + AlgorithmPermitOverrides;
+                public static readonly string OrderedDenyOverrides = V3 + PolicyCombiningToken + AlgorithmOrderedDenyOverrides;
+                public static readonly string OrderedPermitOverrides = V3 + PolicyCombiningToken + AlgorithmOrderedPermitOverrides;
                 public static readonly string DenyUnlessPermit = V3 + PolicyCombiningToken + AlgorithmDenyUnlessPermit;
                 public static readonly string PermitUnlessDeny = V3 + PolicyCombiningToken + AlgorithmPermitUnlessDeny;
             }

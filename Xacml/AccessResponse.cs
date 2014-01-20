@@ -7,5 +7,6 @@ namespace Xacml
 {
     public class AccessResponse
     {
+        public bool IsAuthorized { get; set; }
     }
 }
