@@ -9,6 +9,7 @@ namespace Xacml.Web
     public interface IHttpContext
     {
         IHttpRequest Request { get; }
+        IHttpResponse Response { get; }
         bool SkipAuthorization { get; }
         IPrincipal User { get; }
     }

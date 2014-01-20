@@ -31,6 +31,16 @@ namespace Xacml.Web
             }
         }
 
+        public IHttpResponse Response
+        {
+            get 
+            {
+                if (httpContext.Response != null)
+                    return new HttpResponseAdapter(httpContext.Response);
+                return null;
+            }
+        }
+
         public bool SkipAuthorization
         {
             get { return httpContext.SkipAuthorization; }

@@ -5,7 +5,9 @@ using System.Text;
 
 namespace Xacml.Web
 {
-    interface IHttpResponse
+    public interface IHttpResponse
     {
+        void End();
+        int StatusCode { get; set; }
     }
 }
