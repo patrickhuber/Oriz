@@ -9,7 +9,7 @@ namespace Xacml.Web
     {
         public AccessResponse RequestAccess(IContextHandler context)
         {
-            throw new NotImplementedException();
+            return new AccessResponse {  IsAuthorized = false };
         }
     }
 }
