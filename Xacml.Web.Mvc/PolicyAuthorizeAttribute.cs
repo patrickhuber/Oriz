@@ -9,7 +9,7 @@ namespace Xacml.Web.Mvc
 {
     public class PolicyAuthorizeAttribute : AuthorizeAttribute
     {
-        IPolicyEnforcementPoint PolicyEnforcementPoint { get; private set; }
+        private IPolicyEnforcementPoint PolicyEnforcementPoint { get; set; }
 
         public PolicyAuthorizeAttribute()
             : this(DependencyResolver.Current.GetService<IPolicyEnforcementPoint>())
