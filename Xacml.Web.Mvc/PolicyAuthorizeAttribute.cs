@@ -12,12 +12,17 @@ namespace Xacml.Web.Mvc
         protected override bool AuthorizeCore(HttpContextBase authorizeContext)
         {
             IHttpContext httpContext = new HttpContextAdapter(authorizeContext);
+            return AuthorizeCore(httpContext);
+        }
+
+        public bool AuthorizeCore(IHttpContext httpContext)
+        {
             if (httpContext.SkipAuthorization)
             {
                 if (httpContext.User != null && httpContext.User.Identity.IsAuthenticated)
-                    return true;        
+                    return true;
             }
-            return false;
+            return false;        
         }
     }
 }
