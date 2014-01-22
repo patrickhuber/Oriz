@@ -51,6 +51,7 @@
     <Compile Include="IPolicyEnforcementPoint.cs" />
     <Compile Include="IPolicyInformationPoint.cs" />
     <Compile Include="AccessResponse.cs" />
+    <Compile Include="PolicyEnforcementPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="xacml-core-v3-schema-wd-17.cs">
       <DependentUpon>xacml-core-v3-schema-wd-17.xsd</DependentUpon>
