@@ -295,6 +295,16 @@
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Xacml.Web\Xacml.Web.csproj">
+      <Project>{2cdf3a70-da47-498b-b029-b47a3168bf19}</Project>
+      <Name>Xacml.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xacml\Xacml.csproj">
+      <Project>{a61f3fa2-b224-4eb2-bed1-dadaa2986ca1}</Project>
+      <Name>Xacml</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
