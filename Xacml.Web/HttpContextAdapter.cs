@@ -50,5 +50,15 @@ namespace Xacml.Web
         {
             get { return httpContext.User; }
         }
+
+        public IHttpApplication ApplicationInstance
+        {
+            get 
+            {
+                if (httpContext.ApplicationInstance == null)
+                    return null;
+                return new HttpApplicationAdapter(httpContext.ApplicationInstance);
+            }
+        }
     }
 }

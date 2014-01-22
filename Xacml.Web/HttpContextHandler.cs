@@ -24,9 +24,21 @@ namespace Xacml.Web
                 new AttributesType(
                     Constants.AttributeCategories.Resource,
                     new AttributeType(
-                            Constants.Identifiers.Resource.ResourceId,
-                            Constants.DataTypes.String, 
-                            httpContext.Request.Url.AbsolutePath))                
+                        Constants.Identifiers.Resource.ResourceId,
+                        Constants.DataTypes.String, 
+                        httpContext.Request.Url.AbsolutePath)),
+                new AttributesType(
+                    Constants.Identifiers.SubjectCategory.AccessSubject,
+                    new AttributeType(
+                        Constants.Identifiers.Subject.SubjectId,
+                        Constants.DataTypes.Rfc822Name,
+                        httpContext.User.Identity.Name)),
+                new AttributesType(
+                    Constants.AttributeCategories.Action,
+                    new AttributeType(
+                        Constants.Identifiers.Action.ActionId,
+                        Constants.DataTypes.String,
+                        httpContext.Request.HttpMethod))
             };
             return attributeList;
         }

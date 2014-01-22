@@ -12,5 +12,6 @@ namespace Xacml.Web
         IHttpResponse Response { get; }
         bool SkipAuthorization { get; }
         IPrincipal User { get; }
+        IHttpApplication ApplicationInstance { get; }
     }
 }

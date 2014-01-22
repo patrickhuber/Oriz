@@ -42,8 +42,10 @@
     <Compile Include="AttributesType.cs" />
     <Compile Include="AttributeType.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DependencyResolver.cs" />
     <Compile Include="Descriptor.cs" />
     <Compile Include="IContextHandler.cs" />
+    <Compile Include="IDependencyResolver.cs" />
     <Compile Include="IPolicyAccessPoint.cs" />
     <Compile Include="IPolicyDecisionPoint.cs" />
     <Compile Include="IPolicyEnforcementPoint.cs" />

@@ -8,6 +8,17 @@ namespace Xacml.Web
 {
     public sealed class PolicyAuthorizeModule : IHttpModule
     {
+        IPolicyEnforcementPoint policyEnforcementPoint;
+
+        public PolicyAuthorizeModule()
+            : this(DependencyResolver.Current.GetService<IPolicyEnforcementPoint>())
+        { }
+        
+        public PolicyAuthorizeModule(IPolicyEnforcementPoint policyEnforcementPoint)
+        {
+            this.policyEnforcementPoint = policyEnforcementPoint;
+        }
+
         public void Dispose()
         {
         }
@@ -25,24 +36,36 @@ namespace Xacml.Web
 
         public void OnAuthorizeRequest(IHttpContext httpContext)
         {
+            if (SkipAuthorization(httpContext))
+                return;
+            else if (AccessIsDenied(httpContext))
+                SetUnAuthorizedResponse(httpContext);
+        }
+
+        private bool SkipAuthorization(IHttpContext httpContext)
+        {
             if (httpContext.SkipAuthorization)
             {
                 if (httpContext.User != null && httpContext.User.Identity.IsAuthenticated)
                 {
-                    return;
+                    return true;
                 }
             }
-            else
-            {
-                var contextHandler = new HttpContextHandler(httpContext);
-                var polcyEnforcementPoint = new PolicyEnforcementPoint();
-                var accessResponse = polcyEnforcementPoint.RequestAccess(contextHandler);
-                if (!accessResponse.IsAuthorized)
-                {
-                    httpContext.Response.StatusCode = 401;
-                    httpContext.Response.End();
-                }
-            }
+            return false;
+        }
+
+        private bool AccessIsDenied(IHttpContext httpContext)
+        { 
+            var contextHandler = new HttpContextHandler(httpContext);
+            var accessResponse = policyEnforcementPoint.RequestAccess(contextHandler);
+            return !accessResponse.IsAuthorized;
+        }
+
+        private void SetUnAuthorizedResponse(IHttpContext httpContext)
+        {
+            httpContext.Response.StatusCode = 401;
+            httpContext.Response.End();
+            httpContext.ApplicationInstance.CompleteRequest();
         }
     }
 }

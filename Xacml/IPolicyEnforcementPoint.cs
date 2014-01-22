@@ -7,6 +7,7 @@ namespace Xacml
 {
     public interface IPolicyEnforcementPoint
     {
+        IPolicyDecisionPoint PolicyDecisionPoint { get; }
         AccessResponse RequestAccess(IContextHandler handler);
     }
 }

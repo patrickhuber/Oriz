@@ -8,5 +8,6 @@ namespace Xacml.Web
     public interface IHttpRequest
     {
         Uri Url { get; }
+        string HttpMethod { get; }
     }
 }
