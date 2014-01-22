@@ -19,6 +19,11 @@ namespace Xacml.Web
 
         public IEnumerable<AttributesType> GetContext()
         {
+            return MapContext(httpContext);
+        }
+
+        protected virtual IList<AttributesType> MapContext(IHttpContext httpContext)
+        {
             var attributeList = new List<AttributesType>() 
             {
                 new AttributesType(

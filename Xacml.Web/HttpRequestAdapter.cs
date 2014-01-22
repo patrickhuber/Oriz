@@ -24,5 +24,11 @@ namespace Xacml.Web
         {
             get { return this.httpRequest.HttpMethod; }
         }
+
+
+        public IRequestContext RequestContext
+        {
+            get { return new RequestContextAdapter(httpRequest.RequestContext); }
+        }
     }
 }

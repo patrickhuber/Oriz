@@ -9,5 +9,6 @@ namespace Xacml.Web
     {
         Uri Url { get; }
         string HttpMethod { get; }
+        IRequestContext RequestContext { get; }
     }
 }
