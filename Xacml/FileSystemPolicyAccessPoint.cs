@@ -16,7 +16,7 @@ namespace Xacml
             this.pattern = pattern;
         }
 
-        public IEnumerable<PolicyType> GetPoliciesThatTargetAttributes(IEnumerable<AttributesType> attributes)
+        public IEnumerable<PolicyType> GetApplicablePolicies(IEnumerable<AttributesType> attributes)
         {
             throw new NotImplementedException();
         }
