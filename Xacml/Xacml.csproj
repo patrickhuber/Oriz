@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,6 +53,7 @@
     <Compile Include="IPolicyEnforcementPoint.cs" />
     <Compile Include="IPolicyInformationPoint.cs" />
     <Compile Include="AccessResponse.cs" />
+    <Compile Include="CompositionDependencyResolver.cs" />
     <Compile Include="PolicyDecisionPoint.cs" />
     <Compile Include="PolicyEnforcementPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
