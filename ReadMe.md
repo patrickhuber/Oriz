@@ -44,25 +44,28 @@ Getting Started
 
 ###Enforce Policy in an ASP.NET Mvc Application
 1. Add the Xacml.Web.Mvc.PolicyEnforcementAttribute to the global.asax.cs global filters
-	```csharp
-	GlobalFilters.Filters.Add(new Xacml.Web.Mvc.PolicyEnforcementAttribute());
-	```
+	
+    ```
+    GlobalFilters.Filters.Add(new Xacml.Web.Mvc.PolicyEnforcementAttribute());
+    ```
 2. Set the configuration module for xacml in the config section of the web.config
-	```xml
-	<configuration>
-	  <configSections>
-		<section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/>
-	  </configSections>
-	</configuration>
-	```
+	
+    ```
+    <configuration>
+        <configSections>
+            <section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/>
+        </configSections>
+    </configuration>
+    ```
 3. Set the policy access point to the FileSystemPolicyAccessPoint
-	```xml
-	<xacml>
-		<policyAccessPoint type="Xacml.Web.WebFileSystemPolicyAccessPoint, Xacml, Version=1.0.0.0">
-			<data folder="~/App_Data/Policies"/>
-		</policyAccessPoint>
-	</xacml>
-	```
+    
+    ```
+    <xacml>
+        <policyAccessPoint type="Xacml.Web.WebFileSystemPolicyAccessPoint, Xacml, Version=1.0.0.0">
+            <data folder="~/App_Data/Policies"/>
+        </policyAccessPoint>
+    </xacml>
+    ```
 
 ###Enforce Policy in a WCF Service 
 
