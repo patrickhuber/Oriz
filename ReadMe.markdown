@@ -1,13 +1,70 @@
-# SimpleXacml
-## Overview
+SimpleXacml
+===========
+Overview
+--------
 Implements a simle xacml architecture in .NET
 
-## Purpose
+Purpose
+-------
 Large enterprises have complex authorization needs which opens the door to look at standards compliant authorization standards, to achieve these needs they also have large budgets. 
 
 There are no really 'easy' ways to achieve complex authorization in a simple .NET application without using a large vendor product. So, to fulfill the need and as a learning project, the SimpleXacml implementation was created. 
 
-## License
+Getting Started
+---------------
+
+###Enforce Policy in an ASP.NET Web Forms Application
+1. Add the Xacml.Web.PolicyEnforcementModule to the modules section of the web.config
+	```xml
+	<system.webServer>
+		<modules runAllManagedModulesForAllRequests="true" >
+			<add name="Xacml.Web.PolicyEnforcementModule, Xacml.Web, Version=1.0.0"/>
+		</modules>
+	</system.webServer>
+	```
+2. Set the configuration module for xacml in the config section of the web.config
+	```xml
+	<configuration>
+	  <configSections>
+		<section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/>
+	  </configSections>
+	</configuration>
+	```
+3. Set the policy access point to the FileSystemPolicyAccessPoint
+	```xml
+	<xacml>
+		<policyAccessPoint type="Xacml.Web.WebFileSystemPolicyAccessPoint, Xacml, Version=1.0.0.0">
+			<data folder="~/App_Data/Policies"/>
+		</policyAccessPoint>
+	</xacml>
+	```
+
+###Enforce Policy in an ASP.NET Mvc Application
+1. Add the Xacml.Web.Mvc.PolicyEnforcementAttribute to the global.asax.cs global filters
+	```csharp
+	GlobalFilters.Filters.Add(new Xacml.Web.Mvc.PolicyEnforcementAttribute());
+	```
+2. Set the configuration module for xacml in the config section of the web.config
+	```xml
+	<configuration>
+	  <configSections>
+		<section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/>
+	  </configSections>
+	</configuration>
+	```
+3. Set the policy access point to the FileSystemPolicyAccessPoint
+	```xml
+	<xacml>
+		<policyAccessPoint type="Xacml.Web.WebFileSystemPolicyAccessPoint, Xacml, Version=1.0.0.0">
+			<data folder="~/App_Data/Policies"/>
+		</policyAccessPoint>
+	</xacml>
+	```
+
+###Enforce Policy in a WCF Service 
+
+License
+-------
 
 Copyright (c) 2014, Patrick Huber
 All rights reserved.
