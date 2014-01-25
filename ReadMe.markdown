@@ -15,11 +15,13 @@ Getting Started
 
 ###Enforce Policy in an ASP.NET Web Forms Application
 1. Add the Xacml.Web.PolicyEnforcementModule to the modules section of the web.config	
-    <system.webServer>
-        <modules runAllManagedModulesForAllRequests="true" >
-            <add name="Xacml.Web.PolicyEnforcementModule, Xacml.Web, Version=1.0.0"/>
-        </modules>
-    </system.webServer>	
+``` xml    
+<system.webServer>
+	<modules runAllManagedModulesForAllRequests="true" >
+		<add name="Xacml.Web.PolicyEnforcementModule, Xacml.Web, Version=1.0.0"/>
+	</modules>
+</system.webServer>	
+```
 2. Set the configuration module for xacml in the config section of the web.config	
     <configuration>
         <configSections>
