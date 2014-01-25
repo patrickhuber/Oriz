@@ -9,7 +9,7 @@ namespace Xacml.Web.Mvc
 {
     public class PolicyAuthorizeAttribute : AuthorizeAttribute
     {
-        private IPolicyEnforcementPoint PolicyEnforcementPoint { get; set; }
+        private IPolicyEnforcementPoint policyEnforcementPoint;
 
         public PolicyAuthorizeAttribute()
             : this(DependencyResolver.Current.GetService<IPolicyEnforcementPoint>())
@@ -17,7 +17,7 @@ namespace Xacml.Web.Mvc
 
         public PolicyAuthorizeAttribute(IPolicyEnforcementPoint policyEnforcementPoint)
         {
-            PolicyEnforcementPoint = policyEnforcementPoint;
+            this.policyEnforcementPoint = policyEnforcementPoint;
         }
 
         protected override bool AuthorizeCore(HttpContextBase authorizeContext)
@@ -33,7 +33,8 @@ namespace Xacml.Web.Mvc
                 if (httpContext.User != null && httpContext.User.Identity.IsAuthenticated)
                     return true;
             }
-            var accessResponse = PolicyEnforcementPoint.RequestAccess(new MvcContextHandler(httpContext));
+            var mvcContextHandler = new MvcContextHandler(httpContext);
+            var accessResponse = policyEnforcementPoint.RequestAccess(mvcContextHandler);
             return accessResponse.IsAuthorized;        
         }
     }
