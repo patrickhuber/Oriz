@@ -15,61 +15,55 @@
 <h3>Enforce Policy in an ASP.NET Web Forms Application</h3>
 
 <ol>
-<li><p>Add the Xacml.Web.PolicyEnforcementModule to the modules section of the web.config   </p>
-
-<p><code><br/>
+<li>Add the Xacml.Web.PolicyEnforcementModule to the modules section of the web.config<br/>
+<code>xml<br/>
 &lt;system.webServer&gt;<br/>
     &lt;modules runAllManagedModulesForAllRequests="true" &gt;<br/>
         &lt;add name="Xacml.Web.PolicyEnforcementModule, Xacml.Web, Version=1.0.0"/&gt;<br/>
     &lt;/modules&gt;<br/>
 &lt;/system.webServer&gt;<br/>
-</code></p></li>
-<li><p>Set the configuration module for xacml in the config section of the web.config   </p>
-
-<p><code><br/>
+</code></li>
+<li>Set the configuration module for xacml in the config section of the web.config<br/>
+<code>xml<br/>
 &lt;configuration&gt;<br/>
-    &lt;configSections&gt;<br/>
-        &lt;section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/&gt;<br/>
-    &lt;/configSections&gt;<br/>
+  &lt;configSections&gt;<br/>
+    &lt;section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/&gt;<br/>
+  &lt;/configSections&gt;<br/>
 &lt;/configuration&gt;<br/>
-</code></p></li>
-<li><p>Set the policy access point to the FileSystemPolicyAccessPoint   </p>
-
-<p><code><br/>
+</code></li>
+<li>Set the policy access point to the FileSystemPolicyAccessPoint<br/>
+<code>xml<br/>
 &lt;xacml&gt;<br/>
     &lt;policyAccessPoint type="Xacml.Web.WebFileSystemPolicyAccessPoint, Xacml, Version=1.0.0.0"&gt;<br/>
         &lt;data folder="~/App_Data/Policies"/&gt;<br/>
     &lt;/policyAccessPoint&gt;<br/>
 &lt;/xacml&gt;<br/>
-</code></p></li>
+</code></li>
 </ol>
 
 <h3>Enforce Policy in an ASP.NET Mvc Application</h3>
 
 <ol>
-<li><p>Add the Xacml.Web.Mvc.PolicyEnforcementAttribute to the global.asax.cs global filters</p>
-
-<p><code><br/>
+<li>Add the Xacml.Web.Mvc.PolicyEnforcementAttribute to the global.asax.cs global filters<br/>
+<code>csharp<br/>
 GlobalFilters.Filters.Add(new Xacml.Web.Mvc.PolicyEnforcementAttribute());<br/>
-</code></p></li>
-<li><p>Set the configuration module for xacml in the config section of the web.config</p>
-
-<p><code><br/>
+</code></li>
+<li>Set the configuration module for xacml in the config section of the web.config<br/>
+<code>xml<br/>
 &lt;configuration&gt;<br/>
-    &lt;configSections&gt;<br/>
-        &lt;section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/&gt;<br/>
-    &lt;/configSections&gt;<br/>
+  &lt;configSections&gt;<br/>
+    &lt;section name="xacml" type="Xacml.ConfigurationSection, Xacml, Version=1.0.0.0"/&gt;<br/>
+  &lt;/configSections&gt;<br/>
 &lt;/configuration&gt;<br/>
-</code></p></li>
-<li><p>Set the policy access point to the FileSystemPolicyAccessPoint</p>
-
-<p><code><br/>
+</code></li>
+<li>Set the policy access point to the FileSystemPolicyAccessPoint<br/>
+<code>xml<br/>
 &lt;xacml&gt;<br/>
     &lt;policyAccessPoint type="Xacml.Web.WebFileSystemPolicyAccessPoint, Xacml, Version=1.0.0.0"&gt;<br/>
         &lt;data folder="~/App_Data/Policies"/&gt;<br/>
     &lt;/policyAccessPoint&gt;<br/>
 &lt;/xacml&gt;<br/>
-</code></p></li>
+</code></li>
 </ol>
 
 <h3>Enforce Policy in a WCF Service</h3>
