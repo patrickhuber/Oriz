@@ -24,6 +24,7 @@ Getting Started
     </system.webServer>	
     ```
 2. Set the configuration module for xacml in the config section of the web.config	
+    
     ```
     <configuration>
         <configSections>
