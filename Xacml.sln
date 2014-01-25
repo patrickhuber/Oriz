@@ -28,6 +28,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Falconer.MvcApplication", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FalconerWebFormsApplication", "Examples\FalconerWebFormsApplication\FalconerWebFormsApplication.csproj", "{26E63485-8EE8-42F8-B4BC-FE96DC6A598B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5848E6E1-611F-445D-ACD6-BFFC437DD5FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xacml.Tests.Unit", "Tests\Xacml.Tests.Unit\Xacml.Tests.Unit.csproj", "{2CC74F15-78DF-4E80-B62C-B1CC33E73F29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xacml.Web.Tests.Unit", "Tests\Xacml.Web.Tests.Unit\Xacml.Web.Tests.Unit.csproj", "{5245DBC2-F53A-40B0-910F-7994F50C91F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xacml.Web.Mvc.Tests.Unit", "Tests\Xacml.Web.Mvc.Tests.Unit\Xacml.Web.Mvc.Tests.Unit.csproj", "{AC3792AE-D05A-411E-B421-BEFC36790902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +62,18 @@ Global
 		{26E63485-8EE8-42F8-B4BC-FE96DC6A598B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E63485-8EE8-42F8-B4BC-FE96DC6A598B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E63485-8EE8-42F8-B4BC-FE96DC6A598B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC74F15-78DF-4E80-B62C-B1CC33E73F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC74F15-78DF-4E80-B62C-B1CC33E73F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC74F15-78DF-4E80-B62C-B1CC33E73F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC74F15-78DF-4E80-B62C-B1CC33E73F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5245DBC2-F53A-40B0-910F-7994F50C91F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5245DBC2-F53A-40B0-910F-7994F50C91F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5245DBC2-F53A-40B0-910F-7994F50C91F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5245DBC2-F53A-40B0-910F-7994F50C91F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3792AE-D05A-411E-B421-BEFC36790902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3792AE-D05A-411E-B421-BEFC36790902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3792AE-D05A-411E-B421-BEFC36790902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3792AE-D05A-411E-B421-BEFC36790902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +81,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1871AE67-C9ED-491C-80B9-FA77C32019B7} = {B0963C38-6302-424C-9067-2E0AA6BC2014}
 		{26E63485-8EE8-42F8-B4BC-FE96DC6A598B} = {B0963C38-6302-424C-9067-2E0AA6BC2014}
+		{2CC74F15-78DF-4E80-B62C-B1CC33E73F29} = {5848E6E1-611F-445D-ACD6-BFFC437DD5FD}
+		{5245DBC2-F53A-40B0-910F-7994F50C91F1} = {5848E6E1-611F-445D-ACD6-BFFC437DD5FD}
+		{AC3792AE-D05A-411E-B421-BEFC36790902} = {5848E6E1-611F-445D-ACD6-BFFC437DD5FD}
 	EndGlobalSection
 EndGlobal
