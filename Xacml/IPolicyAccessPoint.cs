@@ -7,6 +7,6 @@ namespace Xacml
 {
     public interface IPolicyAccessPoint
     {
-        IEnumerable<PolicyType> GetApplicablePolicies(IEnumerable<AttributesType> attributes);
+        IEnumerable<PolicyType> GetTargetedPolicies(IEnumerable<AttributesType> attributes);
     }
 }

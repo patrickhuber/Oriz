@@ -29,7 +29,7 @@ namespace Xacml
         public ResponseType Evaluate(RequestType request)
         {
             var requestAttributes = request.Attributes;
-            var policies = PolicyAccessPoint.GetApplicablePolicies(requestAttributes);
+            var policies = PolicyAccessPoint.GetTargetedPolicies(requestAttributes);
             // TODO: Call PAP to get applicable policies based on the targets
             // TODO: Call PIP to get more information about the resources
             // TODO: Run the applicable policies to get an authorization decision

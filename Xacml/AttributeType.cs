@@ -11,15 +11,9 @@ namespace Xacml
         public AttributeType(string id, string dataType, string value)
         {
             AttributeId = id;
-            AttributeValue = new AttributeValueType[]{
-                new AttributeValueType
-                {
-                    DataType = dataType,
-                    Any = new XmlNode[]
-                    {
-                        value.ToXmlNode() 
-                    }
-                }
+            AttributeValue = new AttributeValueType[]
+            {
+                new AttributeValueType(dataType, value)
             };
         }
     }

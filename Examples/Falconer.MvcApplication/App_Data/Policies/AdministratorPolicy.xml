@@ -1,0 +1,37 @@
+﻿<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
+        PolicyId="urn:falconer:names:policyid:AdministratorPolicy"
+        Version="1.0"
+        RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-unless-permit">
+  <Description>Deny Access to the Administrator area for Non Administrators</Description>
+  <Target>
+    <AnyOf>
+      <AllOf>
+        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">          
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Admin</AttributeValue>          
+          <AttributeDesignator 
+            MustBePresent="false"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            AttributeId="urn:system:web:mvc:area"
+            DataType="http://www.w3.org/2001/XmlSchema#string"/>          
+        </Match>
+      </AllOf>
+    </AnyOf>
+  </Target>
+  <Rule RuleId="urn:falconer:names:ruleid:permit-administrators-access-to-admin-area" 
+        Effect="Permit">
+    <Description>Grant access to administrators.</Description>
+    <Target>
+      <AnyOf>
+        <AllOf>
+          <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+            <AttributeDesignator MustBePresent="false"
+               Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+               AttributeId="urn:oasis:names:tc:xacml:3.0:example:attribute:role"
+               DataType="http://www.w3.org/2001/XMLSchema#string"/>
+          </Match>              
+        </AllOf>
+      </AnyOf>      
+    </Target>
+  </Rule>
+</Policy>
