@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xacml
+namespace Xacml.Schemas
 {
     public class AccessResponse
     {

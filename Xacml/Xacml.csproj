@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttributesType.cs" />
-    <Compile Include="AttributeType.cs" />
-    <Compile Include="AttributeValueType.cs" />
+    <Compile Include="Schemas\AttributesType.cs" />
+    <Compile Include="Schemas\AttributeType.cs" />
+    <Compile Include="Schemas\AttributeValueType.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="Descriptor.cs" />
@@ -53,19 +53,19 @@
     <Compile Include="IPolicyDecisionPoint.cs" />
     <Compile Include="IPolicyEnforcementPoint.cs" />
     <Compile Include="IPolicyInformationPoint.cs" />
-    <Compile Include="AccessResponse.cs" />
+    <Compile Include="Schemas\AccessResponse.cs" />
     <Compile Include="CompositionDependencyResolver.cs" />
     <Compile Include="PolicyDecisionPoint.cs" />
     <Compile Include="PolicyEnforcementPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetExpression.cs" />
-    <Compile Include="xacml-core-v3-schema-wd-17.cs">
+    <Compile Include="Schemas\xacml-core-v3-schema-wd-17.cs">
       <DependentUpon>xacml-core-v3-schema-wd-17.xsd</DependentUpon>
     </Compile>
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="xacml-core-v3-schema-wd-17.xsd">
+    <None Include="Schemas\xacml-core-v3-schema-wd-17.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

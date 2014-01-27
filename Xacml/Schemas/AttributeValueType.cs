@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace Xacml
+namespace Xacml.Schemas
 {
     public partial class AttributeValueType
-    {        
+    {
+        public AttributeValueType()
+        { }
         public AttributeValueType(string dataType, string value)
         {
             DataType = dataType;

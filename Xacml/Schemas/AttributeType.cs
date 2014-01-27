@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace Xacml
+namespace Xacml.Schemas
 {
     public partial class AttributeType
     {
