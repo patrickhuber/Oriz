@@ -28,45 +28,52 @@ namespace Xacml
             public static readonly string Environment = AttributeCategory + "environment";
         }
 
-        public static class StatusCodes
+        public static class Status
         {
-            private static readonly string Status = V1 + "status:";
-            public static readonly string MissingAttribute = Status + "missing-attribute";
-            public static readonly string Ok = Status + "ok";
-            public static readonly string ProcessingError = Status + "processing-error";
-            public static readonly string SyntaxError = Status + "syntax-error";
+            private static readonly string StatusPrefix = V1 + "status:";
+            public static readonly string MissingAttribute = StatusPrefix + "missing-attribute";
+            public static readonly string Ok = StatusPrefix + "ok";
+            public static readonly string ProcessingError = StatusPrefix + "processing-error";
+            public static readonly string SyntaxError = StatusPrefix + "syntax-error";
         }
 
 
         public static class Subject
         {
-            private static readonly string SubjectPrefix = V1 + "subject:";
+            private static readonly string SubjectQualifier = "subject";
+            private static readonly string SubjectPrefixV1 = V1 + SubjectQualifier;
+            private static readonly string SubjectPrefixV2 = V2 + SubjectQualifier;
             public static class AuthnLocality
             {
-                private static readonly string AuthnPrefix = SubjectPrefix + "authn-locality:";
+                private static readonly string AuthnPrefix = SubjectPrefixV1 + "authn-locality:";
                 public static readonly string DnsName = AuthnPrefix + "dns-name";
                 public static readonly string IpAddress = AuthnPrefix + "ip-address";
             }
-            public static readonly string AuthenticationMethod = SubjectPrefix + ":authentication-method";
-            public static readonly string AuthenticationTime = SubjectPrefix + ":authentication-time";
-            public static readonly string SubjectId = SubjectPrefix + ":subject-id";
-            public static readonly string SubjectIdQualifier = SubjectPrefix + ":subject-id-qualifier";
+            public static readonly string AuthenticationMethod = SubjectPrefixV1 + "authentication-method";
+            public static readonly string AuthenticationTime = SubjectPrefixV1 + "authentication-time";
+            public static readonly string SubjectId = SubjectPrefixV1 + "subject-id";
+            public static readonly string SubjectIdQualifier = SubjectPrefixV1 + "subject-id-qualifier";
+            public static readonly string Role = SubjectPrefixV2 + "role";
         }
 
         public static class SubjectCategory
         {
-            private static readonly string SubjectCategoryPrefix = V1 + "subject-category:";
-            public static readonly string AccessSubject = SubjectCategoryPrefix + "access-subject";
-            public static readonly string Codebase = SubjectCategoryPrefix + "codebase";
-            public static readonly string IntermediarySubject = SubjectCategoryPrefix + "intermediary-subject";
-            public static readonly string RecepientSubject = SubjectCategoryPrefix + "recipient-subject";
-            public static readonly string RequestingMachine = SubjectCategoryPrefix + "requesting-machine";
+            private static readonly string SubjectCategoryQualifier = "subject-category:";
+            private static readonly string SubjectCategoryPrefixV1 = V1 + SubjectCategoryQualifier;
+            private static readonly string SubjectCategoryPrefixV2 = V2 + SubjectCategoryQualifier;
+            public static readonly string AccessSubject = SubjectCategoryPrefixV1 + "access-subject";
+            public static readonly string Codebase = SubjectCategoryPrefixV1 + "codebase";
+            public static readonly string IntermediarySubject = SubjectCategoryPrefixV1 + "intermediary-subject";
+            public static readonly string RecepientSubject = SubjectCategoryPrefixV1 + "recipient-subject";
+            public static readonly string RequestingMachine = SubjectCategoryPrefixV1 + "requesting-machine";
+            public static readonly string RoleEnablementAuthority = SubjectCategoryPrefixV1 + "role-enablement-authority";
         }
 
         public static class Resource
         {
-            private static readonly string ResourcePrefixV1 = V1 + "resource:";
-            private static readonly string ResourcePrefixV2 = V2 + "resource:";
+            private static readonly string ResourceQualifier = "resource:";
+            private static readonly string ResourcePrefixV1 = V1 + ResourceQualifier;
+            private static readonly string ResourcePrefixV2 = V2 + ResourceQualifier;
             public static readonly string ResourceLocation = ResourcePrefixV1 + "resource-location";
             public static readonly string ResourceId = ResourcePrefixV1 + "resource-id";
             public static readonly string SimpleFileName = ResourcePrefixV1 + "simple-file-name";

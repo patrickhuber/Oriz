@@ -66,26 +66,6 @@ namespace Xacml
                 from a in list.Attribute
                 where a.AttributeId == designator.AttributeId
                 select a;
-
-            //var matches2 = attributes
-            //    .Where(list => list.Category == designator.Category)
-            //    .Select(list => list.Attribute.Where(a => a.AttributeId == designator.AttributeId));
-
-            //foreach (var attributeList in attributes)
-            //{
-            //    bool categoryMatch = attributeList.Category == designator.Category;
-            //    if (categoryMatch)
-            //    {
-            //        foreach (var attribute in attributeList.Attribute)
-            //        {
-            //            bool attributeIdMatch = attribute.AttributeId == designator.AttributeId;
-            //            if (attributeIdMatch)
-            //            {
-            //                yield return attribute;
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         private bool EvaluateSelectorMatch(MatchType matchType, AttributeSelectorType selectorType, IEnumerable<AttributesType> attributes)

@@ -11,7 +11,6 @@ namespace Xacml.Tests.Unit
         [TestMethod]
         public void Test_Evaluate_Matches_User_Is_Administrator()
         {
-            const string Role = "urn:oasis:names:tc:xacml:3.0:example:attribute:role";
             TargetType targetType = new TargetType(
                 new AnyOfType(
                     new AllOfType(
@@ -22,15 +21,17 @@ namespace Xacml.Tests.Unit
                                 "Administrator"),
                             new AttributeDesignatorType(
                                 Constants.SubjectCategory.AccessSubject,
-                                Role,
+                                Constants.Subject.Role,
                                 Constants.DataTypes.String)
                             ))));
 
             var allAttributes = new List<AttributesType>()
             {
                 new AttributesType(Constants.SubjectCategory.AccessSubject, 
-                    new AttributeType(Role, Constants.DataTypes.String, "Administrator"),
-                    new AttributeType(Role, Constants.DataTypes.String, "Physician"))
+                    new AttributeType(Constants.Subject.Role, Constants.DataTypes.String, "Administrator"),
+                    new AttributeType(Constants.Subject.Role, Constants.DataTypes.String, "Physician")),
+                new AttributesType(Constants.AttributeCategories.Resource,
+                    new AttributeType(Constants.Resource.ResourceId, Constants.DataTypes.AnyUri, "http://www.google.com"))
             };
 
             var targetExpression = new TargetExpression(targetType);
