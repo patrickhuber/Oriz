@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Schemas\AllOfType.cs" />
     <Compile Include="Schemas\AnyOfType.cs" />
+    <Compile Include="Schemas\AttributeDesignatorType.cs" />
     <Compile Include="Schemas\AttributesType.cs" />
     <Compile Include="Schemas\AttributeType.cs" />
     <Compile Include="Schemas\AttributeValueType.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="PolicyDecisionPoint.cs" />
     <Compile Include="PolicyEnforcementPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemas\MatchType.cs" />
     <Compile Include="Schemas\TargetType.cs" />
     <Compile Include="TargetExpression.cs" />
     <Compile Include="Schemas\xacml-core-v3-schema-wd-17.cs">

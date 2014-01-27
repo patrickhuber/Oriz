@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xacml.Schemas;
 
 namespace Xacml.Web.Mvc
 {
@@ -10,7 +11,7 @@ namespace Xacml.Web.Mvc
         public MvcContextHandler(IHttpContext httpContext)
             : base(httpContext)
         { }
-
+        
         protected override IList<AttributesType> MapContext(IHttpContext httpContext)
         {
             var baseContext = base.MapContext(httpContext);

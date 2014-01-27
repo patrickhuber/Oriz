@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using Xacml.Schemas;
 
 
 namespace Xacml.Web
@@ -29,19 +30,19 @@ namespace Xacml.Web
                 new AttributesType(
                     Constants.AttributeCategories.Resource,
                     new AttributeType(
-                        Constants.Identifiers.Resource.ResourceId,
+                        Constants.Resource.ResourceId,
                         Constants.DataTypes.String, 
                         httpContext.Request.Url.AbsolutePath)),
                 new AttributesType(
-                    Constants.Identifiers.SubjectCategory.AccessSubject,
+                    Constants.SubjectCategory.AccessSubject,
                     new AttributeType(
-                        Constants.Identifiers.Subject.SubjectId,
+                        Constants.Subject.SubjectId,
                         Constants.DataTypes.Rfc822Name,
                         httpContext.User.Identity.Name)),
                 new AttributesType(
                     Constants.AttributeCategories.Action,
                     new AttributeType(
-                        Constants.Identifiers.Action.ActionId,
+                        Constants.Action.ActionId,
                         Constants.DataTypes.String,
                         httpContext.Request.HttpMethod))
             };

@@ -37,48 +37,49 @@ namespace Xacml
             public static readonly string SyntaxError = Status + "syntax-error";
         }
 
-        public static class Identifiers
+
+        public static class Subject
         {
-            public static class Subject
+            private static readonly string SubjectPrefix = V1 + "subject:";
+            public static class AuthnLocality
             {
-                private static readonly string SubjectPrefix = V1 + "subject:";
-                public static class AuthnLocality
-                {
-                    private static readonly string AuthnPrefix = SubjectPrefix + "authn-locality:";
-                    public static readonly string DnsName = AuthnPrefix + "dns-name";
-                    public static readonly string IpAddress = AuthnPrefix + "ip-address";
-                }
-                public static readonly string AuthenticationMethod = SubjectPrefix + ":authentication-method";
-                public static readonly string AuthenticationTime = SubjectPrefix + ":authentication-time";
-                public static readonly string SubjectId = SubjectPrefix + ":subject-id";
-                public static readonly string SubjectIdQualifier = SubjectPrefix + ":subject-id-qualifier";
+                private static readonly string AuthnPrefix = SubjectPrefix + "authn-locality:";
+                public static readonly string DnsName = AuthnPrefix + "dns-name";
+                public static readonly string IpAddress = AuthnPrefix + "ip-address";
             }
-
-            public static class SubjectCategory
-            {
-                private static readonly string SubjectCategoryPrefix = V1 + "subject-category:";
-                public static readonly string AccessSubject = SubjectCategoryPrefix + "access-subject";
-                public static readonly string Codebase = SubjectCategoryPrefix + "codebase";
-                public static readonly string IntermediarySubject = SubjectCategoryPrefix + "intermediary-subject";
-                public static readonly string RecepientSubject = SubjectCategoryPrefix + "recipient-subject";
-                public static readonly string RequestingMachine = SubjectCategoryPrefix + "requesting-machine";
-            }
-
-            public static class Resource
-            {
-                private static readonly string ResourcePrefix = V1 + "resource:";
-                public static readonly string ResourceLocation = ResourcePrefix + "resource-location";
-                public static readonly string ResourceId = ResourcePrefix + "resource-id";
-                public static readonly string SimpleFileName = ResourcePrefix + "simple-file-name";
-            }
-
-            public static class Action
-            {
-                private static readonly string ActionPrefix = V1 + "action:";
-                public static readonly string ActionId = ActionPrefix + "action-id";
-                public static readonly string ImpliedAction = ActionPrefix + "implied-action";
-            }
+            public static readonly string AuthenticationMethod = SubjectPrefix + ":authentication-method";
+            public static readonly string AuthenticationTime = SubjectPrefix + ":authentication-time";
+            public static readonly string SubjectId = SubjectPrefix + ":subject-id";
+            public static readonly string SubjectIdQualifier = SubjectPrefix + ":subject-id-qualifier";
         }
+
+        public static class SubjectCategory
+        {
+            private static readonly string SubjectCategoryPrefix = V1 + "subject-category:";
+            public static readonly string AccessSubject = SubjectCategoryPrefix + "access-subject";
+            public static readonly string Codebase = SubjectCategoryPrefix + "codebase";
+            public static readonly string IntermediarySubject = SubjectCategoryPrefix + "intermediary-subject";
+            public static readonly string RecepientSubject = SubjectCategoryPrefix + "recipient-subject";
+            public static readonly string RequestingMachine = SubjectCategoryPrefix + "requesting-machine";
+        }
+
+        public static class Resource
+        {
+            private static readonly string ResourcePrefixV1 = V1 + "resource:";
+            private static readonly string ResourcePrefixV2 = V2 + "resource:";
+            public static readonly string ResourceLocation = ResourcePrefixV1 + "resource-location";
+            public static readonly string ResourceId = ResourcePrefixV1 + "resource-id";
+            public static readonly string SimpleFileName = ResourcePrefixV1 + "simple-file-name";
+            public static readonly string TargetNamespace = ResourcePrefixV2 + "target-namespace";
+        }
+
+        public static class Action
+        {
+            private static readonly string ActionPrefix = V1 + "action:";
+            public static readonly string ActionId = ActionPrefix + "action-id";
+            public static readonly string ImpliedAction = ActionPrefix + "implied-action";
+        }
+
 
         public static class Functions
         {
@@ -405,7 +406,7 @@ namespace Xacml
         }
 
         public static class Algorithms
-        {            
+        {
             private static readonly string AlgorithmDenyOverrides = "deny-overrides";
             private static readonly string AlgorithmPermitOverrides = "permit-overrides";
             private static readonly string AlgorithmFirstApplicable = "first-applicable";
