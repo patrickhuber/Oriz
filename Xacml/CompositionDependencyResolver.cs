@@ -21,9 +21,19 @@ namespace Xacml
             this.compositionContainer.ComposeExportedValue<T>(value);
         }
 
+        public void Register<T>(T value, string name)
+        {
+            this.compositionContainer.ComposeExportedValue<T>(name, value);
+        }
+
         public T GetService<T>()
         {
             return compositionContainer.GetExportedValue<T>();
+        }
+
+        public T GetService<T>(string name)
+        {
+            return compositionContainer.GetExportedValue<T>(name);
         }
     }
 }

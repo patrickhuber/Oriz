@@ -7,6 +7,7 @@ namespace Xacml
 {
     public interface IDependencyResolver
     {
-        T GetService<T>();        
+        T GetService<T>();
+        T GetService<T>(string name);
     }
 }
