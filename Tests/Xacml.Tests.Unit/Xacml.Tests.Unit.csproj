@@ -58,6 +58,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FunctionTest.cs" />
     <Compile Include="PolicyEnforcementPointTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetExpressionTests.cs" />
