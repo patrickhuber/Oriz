@@ -8,6 +8,6 @@ namespace Xacml.Functions
 {
     public interface IFunction
     {
-        FunctionResult Evaluate(IEnumerable<IType> values);
+        FunctionResult Evaluate(IEnumerable<IType> arguments);
     }
 }

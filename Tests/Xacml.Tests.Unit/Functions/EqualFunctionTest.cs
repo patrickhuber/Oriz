@@ -5,16 +5,17 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Xacml.Functions;
+using Xacml.Types;
 
-namespace Xacml.Tests.Unit
+namespace Xacml.Tests.Unit.Functions
 {
     /// <summary>
     /// Summary description for FunctionTest
     /// </summary>
     [TestClass]
-    public class FunctionTest
+    public class EqualFunctionTest
     {
-        public FunctionTest()
+        public EqualFunctionTest()
         {
             //
             // TODO: Add constructor logic here
@@ -77,6 +78,12 @@ namespace Xacml.Tests.Unit
             var dependencyResolver = mockDependencyResolver.Object;
             var functionFactory = new FunctionFactory(dependencyResolver);
             var function = functionFactory.Create(Constants.Functions.String.Equal);
+            var result = function.Evaluate(
+                new StringType[]
+                { 
+                    new StringType{ Value = "abc123" },
+                    new StringType{ Value = "abc123" }
+                });
         }
     }
 }

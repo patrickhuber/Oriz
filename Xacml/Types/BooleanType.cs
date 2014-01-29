@@ -7,14 +7,16 @@ namespace Xacml.Types
 {
     public class BooleanType : IType, IEquatable<BooleanType>
     {
+        public bool Value { get; set; }
+
         public string Type
         {
-            get { throw new NotImplementedException(); }
+            get { return Constants.DataTypes.Boolean; }
         }
 
         public bool Equals(BooleanType other)
         {
-            throw new NotImplementedException();
+            return this.Value == other.Value;
         }
     }
 }
