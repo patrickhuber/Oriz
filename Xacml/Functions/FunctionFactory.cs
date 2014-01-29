@@ -18,15 +18,5 @@ namespace Xacml.Functions
         {
             return resolver.GetService<IFunction>(name);
         }
-
-        public IConditionFunction CreateConditionalFunction(IFunction function)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITargetFunction CreateTargetFunction(IFunction function)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

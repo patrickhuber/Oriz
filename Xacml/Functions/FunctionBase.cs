@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xacml.Types;
 
 namespace Xacml.Functions
 {
     public abstract class FunctionBase : IFunction
     {
-
-        public FunctionResult Evaluate()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract FunctionResult Evaluate(IEnumerable<IType> attributes);
     }
 }

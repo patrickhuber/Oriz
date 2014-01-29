@@ -8,22 +8,16 @@ namespace Xacml.Functions
 {
     public class FunctionResult
     {
-        public FunctionResult(StatusType status, string resultType, bool indeterminate, params object[] values)
+        public FunctionResult(StatusType status, string resultType, bool indeterminate, AttributeValueType value)
         {
             Status = status;
             ResultType = resultType;
             Indeterminate = indeterminate;
-            Values = values ?? new object[]{};
+            Value = value;
         }
 
         public bool Indeterminate { get; private set; }
-        
-        public object Value 
-        { 
-            get { return Values.FirstOrDefault(); } 
-        }
-
-        public IEnumerable<object> Values { get; private set; }
+        public AttributeValueType Value { get; private set; }
         public string ResultType { get; private set; }
         public StatusType Status { get; private set; }
     }
