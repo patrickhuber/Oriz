@@ -58,7 +58,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Functions\EqualFunctionTest.cs" />
+    <Compile Include="Functions\FunctionRegistryTests.cs" />
     <Compile Include="PolicyEnforcementPointTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetExpressionTests.cs" />

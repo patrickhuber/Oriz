@@ -40,17 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\FunctionRegistry.cs" />
+    <Compile Include="Functions\IFunctionRegistry.cs" />
     <Compile Include="Types\BooleanType.cs" />
     <Compile Include="Types\IType.cs" />
     <Compile Include="Types\StringType.cs" />
-    <Compile Include="Functions\EqualFunction.cs" />
-    <Compile Include="Functions\FunctionBase.cs" />
-    <Compile Include="Functions\FunctionFactory.cs" />
-    <Compile Include="Functions\IConditionFunction.cs" />
-    <Compile Include="Functions\IFunction.cs" />
-    <Compile Include="Functions\FunctionResult.cs" />
-    <Compile Include="Functions\ITargetFunction.cs" />
-    <Compile Include="Functions\TargetFunction.cs" />
     <Compile Include="Schemas\AllOfType.cs" />
     <Compile Include="Schemas\AnyOfType.cs" />
     <Compile Include="Schemas\AttributeDesignatorType.cs" />
