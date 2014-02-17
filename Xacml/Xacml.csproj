@@ -45,9 +45,6 @@
     <Compile Include="Functions\IFunctionRegistry.cs" />
     <Compile Include="Functions\IFunctionRegistryFactory.cs" />
     <Compile Include="Parsing\Token.cs" />
-    <Compile Include="Types\BooleanType.cs" />
-    <Compile Include="Types\IType.cs" />
-    <Compile Include="Types\StringType.cs" />
     <Compile Include="Schemas\AllOfType.cs" />
     <Compile Include="Schemas\AnyOfType.cs" />
     <Compile Include="Schemas\AttributeDesignatorType.cs" />
