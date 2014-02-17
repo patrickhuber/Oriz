@@ -38,7 +38,9 @@ namespace Xacml.Types
 
         public override string ToString()
         {
-            return string.Format("P{0}Y{1}M", Years, Months);
+            var years = Years;
+            var months = Months;
+            return string.Format("{2}P{0}Y{1}M", Math.Abs(years), Math.Abs(months), years < 0 ? "-" : string.Empty);
         }
 
         public static YearMonthDuration Parse(string input)

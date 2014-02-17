@@ -107,5 +107,21 @@ namespace Xacml.Tests.Unit.Types
             Assert.AreEqual(-60, result.Years);
             Assert.AreEqual(0, result.Months);
         }
+
+        [TestMethod]
+        public void YearMonthDuration_ToString_Negative_Starts_With_Dash()
+        {
+            var ymd = new YearMonthDuration(-121);
+            var result = ymd.ToString();
+            Assert.IsTrue(result.StartsWith("-"));
+        }
+
+        [TestMethod]
+        public void YearMonthDuration_ToString_Format_Is_Correct()
+        {
+            var ymd = new YearMonthDuration(123);
+            var result = ymd.ToString();
+            Assert.AreEqual("P10Y3M", result);
+        }
     }
 }
