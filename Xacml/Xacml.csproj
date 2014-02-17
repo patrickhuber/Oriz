@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions\FunctionRegistry.cs" />
+    <Compile Include="Functions\FunctionRegistryFactory.cs" />
     <Compile Include="Functions\IFunctionRegistry.cs" />
+    <Compile Include="Functions\IFunctionRegistryFactory.cs" />
+    <Compile Include="Parsing\Token.cs" />
     <Compile Include="Types\BooleanType.cs" />
     <Compile Include="Types\IType.cs" />
     <Compile Include="Types\StringType.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Schemas\xacml-core-v3-schema-wd-17.cs">
       <DependentUpon>xacml-core-v3-schema-wd-17.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Types\YearMonthDuration.cs" />
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
