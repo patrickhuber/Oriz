@@ -44,7 +44,12 @@
     <Compile Include="Functions\FunctionRegistryFactory.cs" />
     <Compile Include="Functions\IFunctionRegistry.cs" />
     <Compile Include="Functions\IFunctionRegistryFactory.cs" />
+    <Compile Include="Parsing\ILexer.cs" />
+    <Compile Include="Parsing\Lexer.cs" />
+    <Compile Include="Parsing\RegexTokenDefinition.cs" />
+    <Compile Include="Parsing\StateMachine.cs" />
     <Compile Include="Parsing\Token.cs" />
+    <Compile Include="Parsing\TokenDefinition.cs" />
     <Compile Include="Schemas\AllOfType.cs" />
     <Compile Include="Schemas\AnyOfType.cs" />
     <Compile Include="Schemas\AttributeDesignatorType.cs" />
@@ -72,6 +77,8 @@
     <Compile Include="Schemas\xacml-core-v3-schema-wd-17.cs">
       <DependentUpon>xacml-core-v3-schema-wd-17.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Types\DnsName.cs" />
+    <Compile Include="Types\PortRange.cs" />
     <Compile Include="Types\YearMonthDuration.cs" />
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>

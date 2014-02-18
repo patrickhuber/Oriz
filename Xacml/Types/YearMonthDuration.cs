@@ -59,14 +59,14 @@ namespace Xacml.Types
             {
                 if (currentState == 1)
                 {
-                    if (token.Type == Tokenizer.character)
+                    if (token.Type == Tokenizer.CharacterTokenType)
                     {
                         if (token.Data == "P")
                             currentState = 3;
                         else
                             throw UnexpectedTokenException(token);
                     }
-                    else if (token.Type == Tokenizer.dash)
+                    else if (token.Type == Tokenizer.DashTokenType)
                     {
                         minus = true;
                         currentState = 2;
@@ -76,14 +76,14 @@ namespace Xacml.Types
                 }
                 else if (currentState == 2)
                 {
-                    if (token.Type == Tokenizer.character && token.Data == "P")
+                    if (token.Type == Tokenizer.CharacterTokenType && token.Data == "P")
                         currentState = 3;
                     else
                         throw UnexpectedTokenException(token);
                 }
                 else if (currentState == 3)
                 {
-                    if (token.Type == Tokenizer.number)
+                    if (token.Type == Tokenizer.NumberTokenType)
                     {       
                         number = Int32.Parse(token.Data);
                         currentState = 4;
@@ -93,7 +93,7 @@ namespace Xacml.Types
                 }
                 else if (currentState == 4)
                 {
-                    if (token.Type == Tokenizer.character)
+                    if (token.Type == Tokenizer.CharacterTokenType)
                     { 
                         if(token.Data == "Y")
                         {
@@ -113,7 +113,7 @@ namespace Xacml.Types
                 }
                 else if (currentState == 5)
                 {
-                    if (token.Type == Tokenizer.number)
+                    if (token.Type == Tokenizer.NumberTokenType)
                     {
                         number = Int32.Parse(token.Data);
                         currentState = 6;
@@ -123,7 +123,7 @@ namespace Xacml.Types
                 }
                 else if (currentState == 6)
                 {
-                    if (token.Type == Tokenizer.character && token.Data == "M")
+                    if (token.Type == Tokenizer.CharacterTokenType && token.Data == "M")
                     {
                         months = number;
                         currentState = 7;
@@ -148,14 +148,13 @@ namespace Xacml.Types
 
         private class Tokenizer
         {
-            public const int unknown = -1;
-            public const int dash = 0;
-            public const int character = 1;
-            public const int number = 2;
+            public const string UnknownTokenType = "UNKNOWN";
+            public const string DashTokenType = "DASH";
+            public const string CharacterTokenType = "CHARACTER";
+            public const string NumberTokenType = "NUMBER";
 
             public IEnumerable<Token> Tokenize(string input)
             {
-                var tokens = new List<Token>();
                 Token currentToken = new Token();
                 char lookAhead = '\0';
 
@@ -169,37 +168,37 @@ namespace Xacml.Types
 
                     if (char.IsLetter(c))
                     {
-                        if (currentToken.Type == character)
+                        if (currentToken.Type == CharacterTokenType)
                             currentToken.Data += c;
                         else
                         {
                             if (i > 0)
                                 yield return currentToken;
-                            currentToken = new Token(character, i, c.ToString());
+                            currentToken = new Token(CharacterTokenType, i, c.ToString());
                         }
                     }
                     else if (char.IsNumber(c))
                     {
-                        if (currentToken.Type == number)
+                        if (currentToken.Type == NumberTokenType)
                             currentToken.Data += c;
                         else
                         {
                             if (i > 0)
                                 yield return currentToken;
-                            currentToken = new Token(number, i, c.ToString());
+                            currentToken = new Token(NumberTokenType, i, c.ToString());
                         }
                     }
                     else if (c == '-')
                     {
                         if (i > 0)
                             yield return currentToken;
-                        currentToken = new Token(dash, i, c.ToString());
+                        currentToken = new Token(DashTokenType, i, c.ToString());
                     }
                     else
                     {
                         if (i > 0)
                             yield return currentToken;
-                        currentToken = new Token(unknown, i, c.ToString());
+                        currentToken = new Token(UnknownTokenType, i, c.ToString());
                     }
                 }
                 yield return currentToken;

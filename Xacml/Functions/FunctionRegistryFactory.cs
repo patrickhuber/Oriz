@@ -26,6 +26,7 @@ namespace Xacml.Functions
             functionRegistry.RegisterFunction(Constants.Functions.String.FromDate, new Func<DateTime, string>(dt => dt.ToShortDateString()));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromAnyUri, new Func<Uri, string>(uri => uri.ToString()));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromDayTimeDuration, new Func<YearMonthDuration, string>(ts => ts.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromDnsName, new Func<DnsName, string>(dns => dns.ToString()));
         }
 
         public void RegisterIntegerFunctions(IFunctionRegistry functionRegistry)

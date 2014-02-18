@@ -12,7 +12,7 @@ namespace Xacml.Parsing
             Data = string.Empty;
         }
         
-        public Token(int type, int position, string data)
+        public Token(string type, int position, string data)
         {
             this.Type = type;
             this.Position = position;
@@ -20,7 +20,7 @@ namespace Xacml.Parsing
         }
 
         public int Position { get; set; }
-        public int Type { get; set; }
+        public string Type { get; set; }
         public string Data { get; set; }        
     }
 }
