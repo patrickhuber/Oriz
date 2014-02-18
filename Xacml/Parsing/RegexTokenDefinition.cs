@@ -13,7 +13,8 @@ namespace Xacml.Parsing
         public RegexTokenDefinition(string tokenType, string pattern)
             : base(tokenType)
         {
-            regex = new Regex(pattern);
+            string exactCapture = string.Format("^{0}$", pattern);
+            regex = new Regex(exactCapture);
         }
 
         public override bool IsMatch(string input)

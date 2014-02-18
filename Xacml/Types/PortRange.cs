@@ -7,7 +7,7 @@ using Xacml.Parsing;
 namespace Xacml.Types
 {
     public struct PortRange
-    {
+    {        
         public PortRange(int lowerBound, int upperBound)
         {
             LowerBound = lowerBound;
@@ -16,18 +16,24 @@ namespace Xacml.Types
 
         public static PortRange Parse(string portRangeString)
         {
+            const string NumberTokenType = "NUMBER";
+            const string DashTokenType = "DASH";
+
+            ILexer lexer = new Lexer();
+            lexer.AddTokenDefinition(new RegexTokenDefinition(NumberTokenType, @"\d+"));
+            lexer.AddTokenDefinition(new RegexTokenDefinition(DashTokenType, "[-]"));
+
             var stateMachine = new StateMachine(0);
-            stateMachine.AddRegexTransition(0, 1, Tokenizer.NumberTokenType, @"\d+");
-            stateMachine.AddTransition(0, 2, Tokenizer.DashTokenType);
-            stateMachine.AddRegexTransition(2, 3, Tokenizer.NumberTokenType, @"\d+");
-            stateMachine.AddTransition(1, 4, Tokenizer.DashTokenType);
-            stateMachine.AddRegexTransition(4, 5, Tokenizer.NumberTokenType, @"\d+");
+            stateMachine.AddTransition(0, 1, NumberTokenType);
+            stateMachine.AddTransition(0, 2, DashTokenType);
+            stateMachine.AddTransition(2, 3, NumberTokenType);
+            stateMachine.AddTransition(1, 4, DashTokenType);
+            stateMachine.AddTransition(4, 5, NumberTokenType);
 
             int lowerBound = int.MinValue;
-            int upperBound = int.MaxValue;
-
-            var tokenizer = new Tokenizer();
-            foreach (var token in tokenizer.Tokenize(portRangeString))
+            int upperBound = int.MaxValue;                      
+            
+            foreach (var token in lexer.Tokenize(portRangeString))
                 if (stateMachine.MoveNext(token))
                 {
                     if (stateMachine.CurrentState == 1)
@@ -49,46 +55,6 @@ namespace Xacml.Types
         }
 
         public int LowerBound;
-        public int UpperBound;
-
-        private class Tokenizer
-        {
-            public const string UnknownTokenType = "UNKNOWN";
-            public const string DashTokenType = "DASH";
-            public const string NumberTokenType = "NUMBER";
-            
-            public IEnumerable<Token> Tokenize(string input)
-            {
-                Token currentToken = new Token();
-                for (int i = 0; i < input.Length; i++)
-                {
-                    char c = input[i];
-                    if (Char.IsNumber(c))
-                    {
-                        if (currentToken.Type == NumberTokenType)
-                            currentToken.Data += c;
-                        else
-                        {
-                            if (i > 0)
-                                yield return currentToken;
-                            currentToken = new Token(NumberTokenType, i, c.ToString());
-                        }
-                    }
-                    else if (c == '-')
-                    {
-                        if (i > 0)
-                            yield return currentToken;
-                        currentToken = new Token(DashTokenType, i, c.ToString());
-                    }
-                    else
-                    {
-                        if (i > 0)
-                            yield return currentToken;
-                        currentToken = new Token(UnknownTokenType, i, c.ToString());
-                    }                    
-                }
-                yield return currentToken;
-            }
-        }
+        public int UpperBound;        
     }
 }

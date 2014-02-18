@@ -79,29 +79,32 @@ namespace Xacml.Tests.Unit.Parsing
             int index = 0;
             foreach (var token in lexer.Tokenize("-P20Y6M"))
             {
-                if (index == 0)
+                if(index == 0)
+                    AssertTokenEqual("-", DashTokenType, token);
+                if (index == 1)
                     AssertTokenEqual("P", PeriodDelimiterTokenType, token);
-                else if (index == 1)
-                    AssertTokenEqual("20", NumberTokenType, token);
                 else if (index == 2)
-                    AssertTokenEqual("Y", YearDelimiterTokenType, token);
+                    AssertTokenEqual("20", NumberTokenType, token);
                 else if (index == 3)
-                    AssertTokenEqual("6", NumberTokenType, token);
+                    AssertTokenEqual("Y", YearDelimiterTokenType, token);
                 else if (index == 4)
+                    AssertTokenEqual("6", NumberTokenType, token);
+                else if (index == 5)
                     AssertTokenEqual("M", MonthDelimiterTokenType, token);
                 index++;
             }
+            Assert.IsFalse(index == 0);
         }
 
         [TestMethod]
-        public void Lexer_IpAddress_Tokens()
+        public void Lexer_Tokenize_IpAddress()
         {
             const string PeriodTokenType = "PERIOD";
             const string NumberTokenType = "NUMBER";
 
             ILexer lexer = new Lexer();
-            lexer.AddTokenDefinition(new RegexTokenDefinition(PeriodTokenType, "[.]"));
-            lexer.AddTokenDefinition(new RegexTokenDefinition(NumberTokenType, @"\d+"));
+            lexer.AddTokenDefinition(new RegexTokenDefinition(PeriodTokenType, @"[.]"));
+            lexer.AddTokenDefinition(new RegexTokenDefinition(NumberTokenType, @"[\d]+"));
 
             int index = 0;
             foreach (var token in lexer.Tokenize("192.168.1.1"))
@@ -122,6 +125,31 @@ namespace Xacml.Tests.Unit.Parsing
                     AssertTokenEqual(".", PeriodTokenType, token);                
                 index++;
             }
+            Assert.IsFalse(index == 0);
+        }
+
+        [TestMethod]
+        public void Lexer_Tokenize_Range()
+        {
+            const string NumberTokenType = "NUMBER";
+            const string DashTokenType = "DASH";
+
+            string rangeString = "5000-";
+            
+            ILexer lexer = new Lexer();
+            lexer.AddTokenDefinition(new RegexTokenDefinition(NumberTokenType, @"\d+"));
+            lexer.AddTokenDefinition(new RegexTokenDefinition(DashTokenType, "[-]"));
+
+            int index = 0;
+            foreach (var token in lexer.Tokenize(rangeString))
+            {
+                if (index == 0)
+                    AssertTokenEqual("5000", NumberTokenType, token);
+                if (index == 1)
+                    AssertTokenEqual("-", DashTokenType, token);
+                index++;
+            }
+            Assert.IsFalse(index == 0);
         }
 
         public static void AssertTokenEqual(string expectedData, string expectedTokenType, Token token)

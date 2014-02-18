@@ -36,6 +36,7 @@ namespace Xacml.Parsing
                     throw new Exception(
                         string.Format("Invalid token found at position {0}", startIndex));
 
+                string tokenData = substringBuilder.ToString();
                 substringBuilder.Append(lookAhead);
                 
                 var anyLookaheadMatches = tokenDefinitions                    
@@ -47,8 +48,8 @@ namespace Xacml.Parsing
                     Token token = new Token 
                     { 
                         Type = tokenDefinition.TokenType, 
-                        Position = startIndex, 
-                        Data = substringBuilder.ToString() 
+                        Position = startIndex,
+                        Data = tokenData
                     };
                     startIndex = i + 1;
                     yield return token;
