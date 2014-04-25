@@ -19,14 +19,18 @@ namespace Xacml.Functions
         private void RegisterStringFunctions(IFunctionRegistry functionRegistry)
         {     
             functionRegistry.RegisterFunction(Constants.Functions.String.Concatenate, new Func<string[], string>((strArray)=>string.Concat(strArray)));
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromBoolean, new Func<bool, string>(b => b.ToString()));
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromInteger, new Func<int, string>(i => i.ToString()));
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromDouble, new Func<double, string>(d => d.ToString()));
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromTime, new Func<DateTime, string>(dt => dt.ToShortTimeString()));
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromDate, new Func<DateTime, string>(dt => dt.ToShortDateString()));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromAnyUri, new Func<Uri, string>(uri => uri.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromBoolean, new Func<bool, string>(b => b.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromDate, new Func<DateTime, string>(dt => dt.ToShortDateString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromDateTime, new Func<DateTime, string>(dt=>dt.ToString()));            
             functionRegistry.RegisterFunction(Constants.Functions.String.FromDayTimeDuration, new Func<YearMonthDuration, string>(ts => ts.ToString()));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromDnsName, new Func<DnsName, string>(dns => dns.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromDouble, new Func<double, string>(d => d.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromInteger, new Func<int, string>(i => i.ToString()));            
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromTime, new Func<DateTime, string>(dt => dt.ToShortTimeString()));            
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromRfc822Name, new Func<Rfc822Name, string>(name=>name.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromX500Name, new Func<X500Name, string>(name=>name.ToString()));
+            
         }
 
         public void RegisterIntegerFunctions(IFunctionRegistry functionRegistry)

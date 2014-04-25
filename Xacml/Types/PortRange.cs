@@ -54,7 +54,7 @@ namespace Xacml.Types
             return new PortRange(lowerBound, upperBound);
         }
 
-        public int LowerBound;
-        public int UpperBound;        
+        public readonly int LowerBound;
+        public readonly int UpperBound;        
     }
 }

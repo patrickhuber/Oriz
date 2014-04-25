@@ -46,10 +46,18 @@
     <Compile Include="Functions\IFunctionRegistryFactory.cs" />
     <Compile Include="Parsing\ILexer.cs" />
     <Compile Include="Parsing\Lexer.cs" />
+    <Compile Include="Parsing\ParseException.cs" />
+    <Compile Include="Parsing\Parser.cs" />
+    <Compile Include="Parsing\Production.cs" />
+    <Compile Include="Parsing\ProductionStep.cs" />
     <Compile Include="Parsing\RegexTokenDefinition.cs" />
+    <Compile Include="Parsing\StatefulLexer.cs" />
     <Compile Include="Parsing\StateMachine.cs" />
+    <Compile Include="Parsing\SyntaxNode.cs" />
+    <Compile Include="Parsing\SyntaxTree.cs" />
     <Compile Include="Parsing\Token.cs" />
     <Compile Include="Parsing\TokenDefinition.cs" />
+    <Compile Include="Parsing\TokenSyntaxNode.cs" />
     <Compile Include="Schemas\AllOfType.cs" />
     <Compile Include="Schemas\AnyOfType.cs" />
     <Compile Include="Schemas\AttributeDesignatorType.cs" />
@@ -79,6 +87,8 @@
     </Compile>
     <Compile Include="Types\DnsName.cs" />
     <Compile Include="Types\PortRange.cs" />
+    <Compile Include="Types\Rfc822Name.cs" />
+    <Compile Include="Types\X500Name.cs" />
     <Compile Include="Types\YearMonthDuration.cs" />
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>

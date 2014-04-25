@@ -67,8 +67,7 @@ namespace Xacml.Tests.Unit
         public void Initialize_PolicyEnforcementPoint() 
         {
             CreateContextHandler();
-            CreatePolicyDecisionPoint();           
-
+            policyDecisionPoint = CreatePolicyDecisionPoint();
             policyEnforcementPoint = new PolicyEnforcementPoint(policyDecisionPoint);
         }
 
@@ -87,7 +86,7 @@ namespace Xacml.Tests.Unit
             contextHandler = mockContextHandler.Object;
         }
         
-        private void CreatePolicyDecisionPoint()
+        private static IPolicyDecisionPoint CreatePolicyDecisionPoint()
         {
             var mockPolicyDecisionPoint = new Mock<IPolicyDecisionPoint>();
             mockPolicyDecisionPoint
@@ -96,7 +95,7 @@ namespace Xacml.Tests.Unit
                 {                    
                     return new ResponseType();
                 });
-            policyDecisionPoint = mockPolicyDecisionPoint.Object;
+            return mockPolicyDecisionPoint.Object;
         }
 
         [TestMethod]

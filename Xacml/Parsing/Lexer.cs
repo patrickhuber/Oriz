@@ -33,7 +33,7 @@ namespace Xacml.Parsing
                     .ToArray();
 
                 if (matches.Length == 0)
-                    throw new Exception(
+                    throw new ParseException(
                         string.Format("Invalid token found at position {0}", startIndex));
 
                 string tokenData = substringBuilder.ToString();
@@ -57,7 +57,7 @@ namespace Xacml.Parsing
             }
             
             if(i != input.Length)
-                throw new Exception("Unexpected end of input reached.");
+                throw new ParseException("Unexpected end of input reached.");
 
             yield break;
         }

@@ -61,11 +61,14 @@
     <Compile Include="Functions\FunctionRegistryTests.cs" />
     <Compile Include="Functions\FunctionRegistryFactoryTests.cs" />
     <Compile Include="Parsing\LexerTests.cs" />
+    <Compile Include="Parsing\ParserTests.cs" />
+    <Compile Include="Parsing\AlwaysTrueTokenDefinition.cs" />
     <Compile Include="PolicyEnforcementPointTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetExpressionTests.cs" />
     <Compile Include="Types\DnsNameTests.cs" />
     <Compile Include="Types\PortRangeTests.cs" />
+    <Compile Include="Types\Rfc822NameTests.cs" />
     <Compile Include="Types\YearMonthDurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
