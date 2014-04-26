@@ -30,6 +30,12 @@ namespace Xacml.Parsing
             : base(message)
         { }
 
+        public ParseException(int index, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            Index = index;
+        }
+
         public ParseException(string message, Exception innerException)
             : base(message, innerException)
         { }

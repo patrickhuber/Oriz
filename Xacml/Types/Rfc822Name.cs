@@ -3,7 +3,7 @@ using System.Linq;
 using Xacml.Parsing;
 namespace Xacml.Types
 {
-    [Obsolete("Use System.Net.MailAddress")]
+    [Obsolete("Use System.Net.MailAddress", true)]
     public struct Rfc822Name : IEquatable<Rfc822Name>
     {
         public readonly string LocalPart;

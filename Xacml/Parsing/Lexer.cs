@@ -8,14 +8,19 @@ namespace Xacml.Parsing
     public class Lexer : ILexer
     {
         private char Null = '\0';
-        private IList<TokenDefinition> tokenDefinitions;
+        private IList<TokenDefinition> _tokenDefinitions;
         
         public Lexer()
         {
-            tokenDefinitions = new List<TokenDefinition>();
+            _tokenDefinitions = new List<TokenDefinition>();
         }
 
-        public IEnumerable<Token> Tokenize(string input)
+        public Lexer(IEnumerable<TokenDefinition> tokenDefinitions)
+        {
+            _tokenDefinitions = new List<TokenDefinition>(tokenDefinitions);
+        }
+
+        private IEnumerable<Token> TokenizeCore(string input)
         {
             char lookAhead = Null;
             int startIndex = 0;
@@ -26,9 +31,9 @@ namespace Xacml.Parsing
                     lookAhead = input[i + 1];
                 else
                     lookAhead = Null;
-                
-                var substringBuilder = new StringBuilder(input.Substring(startIndex, i - startIndex + 1));                
-                var matches = tokenDefinitions
+
+                var substringBuilder = new StringBuilder(input.Substring(startIndex, i - startIndex + 1));
+                var matches = _tokenDefinitions
                     .Where(x => x.IsMatch(substringBuilder.ToString()))
                     .ToArray();
 
@@ -38,16 +43,16 @@ namespace Xacml.Parsing
 
                 string tokenData = substringBuilder.ToString();
                 substringBuilder.Append(lookAhead);
-                
-                var anyLookaheadMatches = tokenDefinitions                    
+
+                var anyLookaheadMatches = _tokenDefinitions
                     .Any(x => x.IsMatch(substringBuilder.ToString()));
-                
+
                 if (!anyLookaheadMatches)
-                { 
+                {
                     TokenDefinition tokenDefinition = matches.First();
-                    Token token = new Token 
-                    { 
-                        Type = tokenDefinition.TokenType, 
+                    Token token = new Token
+                    {
+                        Type = tokenDefinition.TokenType,
                         Position = startIndex,
                         Data = tokenData
                     };
@@ -55,16 +60,21 @@ namespace Xacml.Parsing
                     yield return token;
                 }
             }
-            
-            if(i != input.Length)
+
+            if (i != input.Length)
                 throw new ParseException("Unexpected end of input reached.");
 
             yield break;
         }
 
+        public LookaheadEnumerable<Token> Tokenize(string input)
+        {
+            return new LookaheadEnumerable<Token>(TokenizeCore(input));
+        }
+
         public void AddTokenDefinition(TokenDefinition tokenDefinition)
         {
-            this.tokenDefinitions.Add(tokenDefinition);
+            this._tokenDefinitions.Add(tokenDefinition);
         }
     }
 }

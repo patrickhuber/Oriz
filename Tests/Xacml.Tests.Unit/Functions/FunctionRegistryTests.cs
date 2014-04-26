@@ -15,7 +15,7 @@ namespace Xacml.Tests.Unit.Functions
         { }
 
         [TestMethod]
-        public void FunctionRegistry_Registers_Delegates()
+        public void Test_FunctionRegistry_Registers_Delegates()
         {
             var dictionary = new Dictionary<string, Delegate>();
             IFunctionRegistry functionRegistery = new FunctionRegistry(dictionary);
@@ -25,7 +25,7 @@ namespace Xacml.Tests.Unit.Functions
         }
 
         [TestMethod]
-        public void FunctionRegistery_Recalls_Delegate()
+        public void Test_FunctionRegistery_Recalls_Delegate()
         {
             IFunctionRegistry functionRegistry = new FunctionRegistry();
             functionRegistry.RegisterFunction(Constants.Functions.Double.Abs, new Func<double, double>(val => Math.Abs(val)));

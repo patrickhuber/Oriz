@@ -55,6 +55,21 @@ namespace Xacml.Types
         }
 
         public readonly int LowerBound;
-        public readonly int UpperBound;        
+        public readonly int UpperBound;
+
+        public override bool Equals(object obj)
+        {
+            if (obj is PortRange)
+            {
+                PortRange portRange = (PortRange)obj;
+                return this.UpperBound == portRange.UpperBound && this.LowerBound == portRange.LowerBound;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return UpperBound.GetHashCode() ^ LowerBound.GetHashCode();
+        }
     }
 }

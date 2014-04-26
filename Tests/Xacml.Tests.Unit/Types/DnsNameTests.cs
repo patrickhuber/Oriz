@@ -60,13 +60,13 @@ namespace Xacml.Tests.Unit.Types
         #endregion
 
         [TestMethod]
-        public void DnsName_Parse_HostName()
+        public void Test_DnsName_Parse_HostName()
         {   
          
         }
 
         [TestMethod]
-        public void DnsName_Parse_HostName_PortRange()
+        public void Test_DnsName_Parse_HostName_PortRange()
         {
 
         }

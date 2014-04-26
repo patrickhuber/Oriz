@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Xacml.Types;
 
@@ -18,6 +21,8 @@ namespace Xacml.Functions
 
         private void RegisterStringFunctions(IFunctionRegistry functionRegistry)
         {     
+            functionRegistry.RegisterFunction(Constants.Functions.String.Equal, new Func<string, string, bool>((x,y)=>x.Equals(y)));
+            functionRegistry.RegisterFunction(Constants.Functions.String.EqualIgnoreCase, new Func<string, string, bool>((x, y) => x.Equals(y, StringComparison.CurrentCultureIgnoreCase)));
             functionRegistry.RegisterFunction(Constants.Functions.String.Concatenate, new Func<string[], string>((strArray)=>string.Concat(strArray)));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromAnyUri, new Func<Uri, string>(uri => uri.ToString()));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromBoolean, new Func<bool, string>(b => b.ToString()));
@@ -28,8 +33,8 @@ namespace Xacml.Functions
             functionRegistry.RegisterFunction(Constants.Functions.String.FromDouble, new Func<double, string>(d => d.ToString()));
             functionRegistry.RegisterFunction(Constants.Functions.String.FromInteger, new Func<int, string>(i => i.ToString()));            
             functionRegistry.RegisterFunction(Constants.Functions.String.FromTime, new Func<DateTime, string>(dt => dt.ToShortTimeString()));            
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromRfc822Name, new Func<Rfc822Name, string>(name=>name.ToString()));
-            functionRegistry.RegisterFunction(Constants.Functions.String.FromX500Name, new Func<X500Name, string>(name=>name.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromRfc822Name, new Func<MailAddress, string>(name=>name.ToString()));
+            functionRegistry.RegisterFunction(Constants.Functions.String.FromX500Name, new Func<X500DistinguishedName, string>(name=>name.ToString()));
             
         }
 

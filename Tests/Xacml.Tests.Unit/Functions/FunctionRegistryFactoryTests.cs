@@ -8,7 +8,7 @@ namespace Xacml.Tests.Unit.Functions
     public class FunctionRegistryFactoryTests
     {
         [TestMethod]
-        public void FunctionReigstryFactory_Covers_String_Methods()
+        public void Test_FunctionReigstryFactory_Covers_String_Methods()
         {
             IFunctionRegistryFactory functionRegistryFactory = new FunctionRegistryFactory();
         }

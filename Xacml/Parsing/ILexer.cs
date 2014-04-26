@@ -10,7 +10,7 @@ namespace Xacml.Parsing
     /// </summary>
     public interface ILexer
     {
-        IEnumerable<Token> Tokenize(string input);
+        LookaheadEnumerable<Token> Tokenize(string input);
         void AddTokenDefinition(TokenDefinition tokenDefinition);
     }
 }

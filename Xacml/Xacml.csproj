@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.props" Condition="Exists('..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +12,9 @@
     <AssemblyName>Xacml</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>1c4081ad</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr4.Runtime.v4.0">
+      <HintPath>..\packages\Antlr4.Runtime.4.2.2-alpha001\lib\net40\Antlr4.Runtime.v4.0.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -44,14 +51,20 @@
     <Compile Include="Functions\FunctionRegistryFactory.cs" />
     <Compile Include="Functions\IFunctionRegistry.cs" />
     <Compile Include="Functions\IFunctionRegistryFactory.cs" />
+    <Compile Include="Parsing\Grammar.cs" />
     <Compile Include="Parsing\ILexer.cs" />
+    <Compile Include="Parsing\IProductionStep.cs" />
+    <Compile Include="Parsing\IProductionSwitch.cs" />
     <Compile Include="Parsing\Lexer.cs" />
+    <Compile Include="Parsing\LookaheadEnumerable.cs" />
+    <Compile Include="Parsing\LookaheadEnumerator.cs" />
     <Compile Include="Parsing\ParseException.cs" />
     <Compile Include="Parsing\Parser.cs" />
     <Compile Include="Parsing\Production.cs" />
+    <Compile Include="Parsing\ProductionCase.cs" />
     <Compile Include="Parsing\ProductionStep.cs" />
+    <Compile Include="Parsing\ProductionSwitch.cs" />
     <Compile Include="Parsing\RegexTokenDefinition.cs" />
-    <Compile Include="Parsing\StatefulLexer.cs" />
     <Compile Include="Parsing\StateMachine.cs" />
     <Compile Include="Parsing\SyntaxNode.cs" />
     <Compile Include="Parsing\SyntaxTree.cs" />
@@ -93,11 +106,22 @@
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Schemas\xacml-core-v3-schema-wd-17.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.props'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.targets'))" />
+  </Target>
+  <Import Project="..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.targets" Condition="Exists('..\packages\Antlr4.4.2.2-alpha001\build\Antlr4.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

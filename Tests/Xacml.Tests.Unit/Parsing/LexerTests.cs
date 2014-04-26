@@ -61,7 +61,7 @@ namespace Xacml.Tests.Unit.Parsing
         #endregion
 
         [TestMethod]
-        public void Lexer_Tokenize_YearMonthDuration()
+        public void Test_Lexer_Tokenize_YearMonthDuration()
         {
             const string PeriodDelimiterTokenType = "PERIOD_DELIM";
             const string YearDelimiterTokenType = "YEAR_DELIM";
@@ -97,7 +97,7 @@ namespace Xacml.Tests.Unit.Parsing
         }
 
         [TestMethod]
-        public void Lexer_Tokenize_IpAddress()
+        public void Test_Lexer_Tokenize_IpAddress()
         {
             const string PeriodTokenType = "PERIOD";
             const string NumberTokenType = "NUMBER";
@@ -129,7 +129,7 @@ namespace Xacml.Tests.Unit.Parsing
         }
 
         [TestMethod]
-        public void Lexer_Tokenize_Range()
+        public void Test_Lexer_Tokenize_Range()
         {
             const string NumberTokenType = "NUMBER";
             const string DashTokenType = "DASH";

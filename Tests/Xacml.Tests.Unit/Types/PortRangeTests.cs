@@ -61,7 +61,7 @@ namespace Xacml.Tests.Unit.Types
         #endregion
 
         [TestMethod]
-        public void PortRange_Parse_LowerBound()
+        public void Test_PortRange_Parse_LowerBound()
         {
             int lowerBound = 5000;
             string portRangeString = "5000-";
@@ -71,7 +71,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void PortRange_Parse_UpperBound()
+        public void Test_PortRange_Parse_UpperBound()
         {
             int upperBound = 8000;
             string portRangeString = "-8000";
@@ -81,7 +81,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void PortRange_Parse_Range()
+        public void Test_PortRange_Parse_Range()
         {
             int upperBound = 1000;
             int lowerBound = 5;

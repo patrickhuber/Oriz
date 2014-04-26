@@ -61,7 +61,7 @@ namespace Xacml.Tests.Unit.Types
         #endregion
 
         [TestMethod]
-        public void YearMonthDuration_Years_Returns_Year_Part()
+        public void Test_YearMonthDuration_Years_Returns_Year_Part()
         {
             var ymd = new YearMonthDuration(2, 6);
             Assert.AreEqual(2, ymd.Years);
@@ -69,7 +69,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_Parse_2_Years_6_Months()
+        public void Test_YearMonthDuration_Parse_2_Years_6_Months()
         {
             var result = YearMonthDuration.Parse("P2Y6M"); // 2 years, 6 months
             Assert.AreEqual(2, result.Years);
@@ -77,7 +77,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_Parse_20_Months()
+        public void Test_YearMonthDuration_Parse_20_Months()
         { 
             var result = YearMonthDuration.Parse("P20M"); // 20 months (the number of months can be more than 12)
             Assert.AreEqual(1, result.Years);
@@ -85,7 +85,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_Parse_20_Months_0_Years()
+        public void Test_YearMonthDuration_Parse_20_Months_0_Years()
         { 
             var result = YearMonthDuration.Parse("P0Y20M"); // 20 months (0 is permitted as a number, but is not required)
             Assert.AreEqual(1, result.Years);
@@ -93,7 +93,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_Parse_0_Years()
+        public void Test_YearMonthDuration_Parse_0_Years()
         { 
             var result = YearMonthDuration.Parse("P0Y"); // 0 years
             Assert.AreEqual(0, result.Years);
@@ -101,7 +101,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_Parse_Negative_60_Years()
+        public void Test_YearMonthDuration_Parse_Negative_60_Years()
         {
             var result = YearMonthDuration.Parse("-P60Y"); // 0 years
             Assert.AreEqual(-60, result.Years);
@@ -109,7 +109,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_ToString_Negative_Starts_With_Dash()
+        public void Test_YearMonthDuration_ToString_Negative_Starts_With_Dash()
         {
             var ymd = new YearMonthDuration(-121);
             var result = ymd.ToString();
@@ -117,7 +117,7 @@ namespace Xacml.Tests.Unit.Types
         }
 
         [TestMethod]
-        public void YearMonthDuration_ToString_Format_Is_Correct()
+        public void Test_YearMonthDuration_ToString_Format_Is_Correct()
         {
             var ymd = new YearMonthDuration(123);
             var result = ymd.ToString();
