@@ -73,13 +73,13 @@
     <Compile Include="Types\YearMonthDurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xacml\Xacml.csproj">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\libraries\Xacml\Xacml.csproj">
       <Project>{a61f3fa2-b224-4eb2-bed1-dadaa2986ca1}</Project>
       <Name>Xacml</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

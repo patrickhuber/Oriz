@@ -56,11 +56,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xacml.ServiceModel\Xacml.ServiceModel.csproj">
+    <ProjectReference Include="..\..\libraries\Xacml.ServiceModel\Xacml.ServiceModel.csproj">
       <Project>{a379011d-1187-42ed-a406-2bd4f0c076fb}</Project>
       <Name>Xacml.ServiceModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Xacml\Xacml.csproj">
+    <ProjectReference Include="..\..\libraries\Xacml\Xacml.csproj">
       <Project>{a61f3fa2-b224-4eb2-bed1-dadaa2986ca1}</Project>
       <Name>Xacml</Name>
     </ProjectReference>

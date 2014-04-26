@@ -237,15 +237,15 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xacml.Web.Mvc\Xacml.Web.Mvc.csproj">
+    <ProjectReference Include="..\..\libraries\Xacml.Web.Mvc\Xacml.Web.Mvc.csproj">
       <Project>{0ce581c9-58ff-48d2-94ca-a6dc644c635e}</Project>
       <Name>Xacml.Web.Mvc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Xacml.Web\Xacml.Web.csproj">
+    <ProjectReference Include="..\..\libraries\Xacml.Web\Xacml.Web.csproj">
       <Project>{2cdf3a70-da47-498b-b029-b47a3168bf19}</Project>
       <Name>Xacml.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Xacml\Xacml.csproj">
+    <ProjectReference Include="..\..\libraries\Xacml\Xacml.csproj">
       <Project>{a61f3fa2-b224-4eb2-bed1-dadaa2986ca1}</Project>
       <Name>Xacml</Name>
     </ProjectReference>
