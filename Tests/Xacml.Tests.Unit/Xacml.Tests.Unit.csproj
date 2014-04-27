@@ -44,6 +44,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -71,6 +72,7 @@
     <Compile Include="Types\PortRangeTests.cs" />
     <Compile Include="Types\MailAddressTests.cs" />
     <Compile Include="Types\YearMonthDurationTests.cs" />
+    <Compile Include="PolicyDecisionPointTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -80,6 +82,12 @@
       <Project>{a61f3fa2-b224-4eb2-bed1-dadaa2986ca1}</Project>
       <Name>Xacml</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Policies\MustBeAdministratorGroupReadPolicy.xml" />
+    <Content Include="Requests\AdminReadFromAdministrators.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

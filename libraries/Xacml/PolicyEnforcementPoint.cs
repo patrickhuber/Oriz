@@ -35,7 +35,7 @@ namespace Xacml
 
         private static bool CheckResponseAuthorized(ResponseType response)        
         {
-            return response.Result.Any(r => r.Decision == DecisionType.Deny);
+            return response.Result.All(r => r.Decision != DecisionType.Deny);
         }
 
         public IPolicyDecisionPoint PolicyDecisionPoint

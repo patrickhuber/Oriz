@@ -61,14 +61,12 @@ namespace Xacml.Tests.Unit
 
         private IContextHandler contextHandler;
         private IPolicyDecisionPoint policyDecisionPoint;
-        private PolicyEnforcementPoint policyEnforcementPoint;
+        private IPolicyEnforcementPoint policyEnforcementPoint;
 
         [TestInitialize()]
-        public void Initialize_PolicyEnforcementPoint() 
+        public void Initialize_PolicyEnforcementPoint()
         {
-            CreateContextHandler();
-            policyDecisionPoint = CreatePolicyDecisionPoint();
-            policyEnforcementPoint = new PolicyEnforcementPoint(policyDecisionPoint);
+            CreateContextHandler();            
         }
 
         private void CreateContextHandler()
@@ -85,25 +83,66 @@ namespace Xacml.Tests.Unit
                 });
             contextHandler = mockContextHandler.Object;
         }
-        
-        private static IPolicyDecisionPoint CreatePolicyDecisionPoint()
+
+        private IPolicyEnforcementPoint CreatePermitAllPolicyEnforcementPoint()
+        {
+            policyDecisionPoint = CreatePermitAllPolicyDecisionPoint();
+            return new PolicyEnforcementPoint(policyDecisionPoint);
+        }
+
+        private IPolicyEnforcementPoint CreateDenyAllPolicyEnforcementPoint()
+        {
+            policyDecisionPoint = CreateDenyAllPolicyDecisionPoint();
+            return new PolicyEnforcementPoint(policyDecisionPoint);
+        }
+
+        private IPolicyDecisionPoint CreatePermitAllPolicyDecisionPoint()
+        {
+            return CreatePolicyDecisionPoint(DecisionType.Permit);
+        }
+
+        private IPolicyDecisionPoint CreateDenyAllPolicyDecisionPoint()
+        {
+            return CreatePolicyDecisionPoint(DecisionType.Deny);
+        }
+
+        private IPolicyDecisionPoint CreatePolicyDecisionPoint(DecisionType decisionType)
         {
             var mockPolicyDecisionPoint = new Mock<IPolicyDecisionPoint>();
             mockPolicyDecisionPoint
                 .Setup(pdp => pdp.Evaluate(Moq.It.IsAny<RequestType>()))
                 .Returns<RequestType>(req =>
-                {                    
-                    return new ResponseType();
+                {
+                    return new ResponseType()
+                    {
+                        Result = new[]
+                        {
+                            new ResultType() 
+                            {
+                                Decision = decisionType
+                            }
+                        }
+                    };
                 });
             return mockPolicyDecisionPoint.Object;
         }
 
         [TestMethod]
-        public void Test_RequestAccess_Forwards_Attributes_To_Request()
+        public void Test_RequestAccess_With_Permit_Forwards_Attributes_To_Request()
         {
+            policyEnforcementPoint = CreatePermitAllPolicyEnforcementPoint();
             var result = policyEnforcementPoint.RequestAccess(contextHandler);
             Assert.IsNotNull(result);
             Assert.IsTrue(result.IsAuthorized);
+        }
+
+        [TestMethod]
+        public void Test_RequestAccess_With_Deny_Forwards_Attributes_To_Request()
+        {
+            policyEnforcementPoint = CreateDenyAllPolicyEnforcementPoint();
+            var result = policyEnforcementPoint.RequestAccess(contextHandler);
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.IsAuthorized);
         }
     }
 }
