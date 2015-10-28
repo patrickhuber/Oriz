@@ -2,39 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Xacml.Schemas;
+using System.Threading.Tasks;
 
 namespace Xacml
 {
-    public class PolicyDecisionPoint : IPolicyDecisionPoint
+    public class PolicyDecisionPoint
     {
+        public PolicyManagementPoint PolicyManagementPoint { get; set; }
 
-        public PolicyDecisionPoint(IPolicyInformationPoint policyInformationPoint, IPolicyAccessPoint policyAccessPoint)
+        public AuthorizationResponse Authorize(AuthorizationRequest request)
         {
-            PolicyInformationPoint = policyInformationPoint;
-            PolicyAccessPoint = policyAccessPoint;
-        }
+            var policies = PolicyManagementPoint.GetApplicablePolicies(request.AuthorizationContext);
+            var policySets = PolicyManagementPoint.GetApplicablePolicySets(request.AuthorizationContext);
 
-        public IPolicyInformationPoint PolicyInformationPoint
-        {
-            get;
-            private set;
-        }
-
-        public IPolicyAccessPoint PolicyAccessPoint
-        {
-            get;
-            private set;
-        }
-
-        public ResponseType Evaluate(RequestType request)
-        {
-            var requestAttributes = request.Attributes;
-            var policies = PolicyAccessPoint.GetTargetedPolicies(requestAttributes);
-            // TODO: Call PAP to get applicable policies based on the targets
-            // TODO: Call PIP to get more information about the resources
-            // TODO: Run the applicable policies to get an authorization decision
-            throw new NotImplementedException();
+            var authorizationResponse = new AuthorizationResponse();
+            authorizationResponse.Results = new List<Result>();
+            foreach (var policySet in policySets)
+                authorizationResponse.Results.Add(new Result { Decision = policySet.Evaluate(request.AuthorizationContext) });
+            foreach (var policy in policies)
+                authorizationResponse.Results.Add(new Result { Decision = policy.Evaluate(request.AuthorizationContext) });
+            return authorizationResponse;
         }
     }
 }
