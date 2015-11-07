@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Xacml.Algorithms
 {
+    /// <summary>
+    /// <see cref="http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html#_Toc297001243"/>
+    /// </summary>
     public class PermitOverridesCombiningAlgorithm : CombiningAlgorithm
     {
         public override Decision Evaluate(IEnumerable<IDecisionEvaluator> evaluators, AuthorizationContext context)
