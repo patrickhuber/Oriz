@@ -2,7 +2,7 @@ SimpleXacml
 ===========
 Overview
 --------
-Implements a stripped down version of xaml in .NET
+Implements a stripped down version of xcaml in .NET
 
 Purpose
 -------
