@@ -54,11 +54,13 @@
     <Compile Include="AuthorizationRequest.cs" />
     <Compile Include="AuthorizationResponse.cs" />
     <Compile Include="CombiningAlgorithm.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Decision.cs" />
     <Compile Include="IDecisionEvaluator.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Matches\StringEqualIgnoreCaseMatch.cs" />
     <Compile Include="Matches\StringEqualMatch.cs" />
+    <Compile Include="MatchResult.cs" />
     <Compile Include="Policy.cs" />
     <Compile Include="PolicyDecisionPoint.cs" />
     <Compile Include="PolicyManagementPoint.cs" />

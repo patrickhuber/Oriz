@@ -10,12 +10,12 @@ namespace Xacml
     {
         public ICollection<AllOf> AllOf { get; set; }
 
-        public bool Evaluate(ICollection<AttributeCategory> attributeCategories)
+        public MatchResult Evaluate(AuthorizationContext authorizationContext)
         {
             foreach (var allOf in AllOf)
-                if (allOf.Evaluate(attributeCategories))
-                    return true;
-            return false;
+                if (allOf.Evaluate(authorizationContext) == MatchResult.True)
+                    return MatchResult.True;
+            return MatchResult.False;
         }
         
     }

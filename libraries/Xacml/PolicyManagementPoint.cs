@@ -13,7 +13,7 @@ namespace Xacml
         {
             var applicablePolicies = new List<Policy>();
             foreach (var policy in Policies)
-                if (policy.Target.Evaluate(authorizationContext.AttributeCategories))
+                if (policy.Target.Evaluate(authorizationContext) == MatchResult.True)
                     applicablePolicies.Add(policy);
             return applicablePolicies;
         }
@@ -22,7 +22,7 @@ namespace Xacml
         {
             var applicablePolicySets = new List<PolicySet>();
             foreach (var policySet in PolicySets)
-                if (policySet.Target.Evaluate(authorizationContext.AttributeCategories))
+                if (policySet.Target.Evaluate(authorizationContext) == MatchResult.True)
                     applicablePolicySets.Add(policySet);
             return applicablePolicySets;
         }
