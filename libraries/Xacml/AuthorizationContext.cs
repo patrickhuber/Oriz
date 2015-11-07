@@ -9,5 +9,11 @@ namespace Xacml
     public class AuthorizationContext
     {
         public ICollection<AttributeCategory> AttributeCategories { get; set; }
+
+        public AuthorizationContext() { }
+        public AuthorizationContext(params AttributeCategory[] attributeCategories)
+        {
+            AttributeCategories = new List<AttributeCategory>(attributeCategories);
+        }
     }
 }

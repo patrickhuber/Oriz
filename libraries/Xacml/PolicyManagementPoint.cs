@@ -5,9 +5,21 @@ namespace Xacml
 {
     public class PolicyManagementPoint
     {
-        public IList<Policy> Policies { get; set; }
+        public IList<Policy> Policies { get; private set; }
 
-        public IList<PolicySet> PolicySets { get; set; }
+        public IList<PolicySet> PolicySets { get; private set; }
+
+        public PolicyManagementPoint(IList<Policy> policies, IList<PolicySet> policySets)
+        {
+            Policies = new List<Policy>(policies);
+            PolicySets = new List<PolicySet>(policySets);
+        }
+
+        public PolicyManagementPoint()            
+        {
+            Policies = new List<Policy>();
+            PolicySets = new List<PolicySet>();
+        }
 
         public ICollection<Policy> GetApplicablePolicies(AuthorizationContext authorizationContext)
         {

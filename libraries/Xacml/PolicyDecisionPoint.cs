@@ -8,7 +8,12 @@ namespace Xacml
 {
     public class PolicyDecisionPoint
     {
-        public PolicyManagementPoint PolicyManagementPoint { get; set; }
+        public PolicyManagementPoint PolicyManagementPoint { get; private set; }
+
+        public PolicyDecisionPoint(PolicyManagementPoint policyManagementPoint)
+        {
+            PolicyManagementPoint = policyManagementPoint;
+        }
 
         public AuthorizationResponse Authorize(AuthorizationRequest request)
         {
