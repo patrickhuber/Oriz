@@ -9,6 +9,8 @@ namespace Xacml.Tests
         public void Test_PolicyDecisionPoint_That_Read_Medical_Record_Pulls_Policy_From_PMP()
         {
             var policyManagementPoint = new PolicyManagementPoint();
+            policyManagementPoint.Policies.Add(
+                new Policy { Id = "" });
             var policyDecisionPoint = new PolicyDecisionPoint(policyManagementPoint);
 
             var authorizationResponse = policyDecisionPoint.Authorize(
