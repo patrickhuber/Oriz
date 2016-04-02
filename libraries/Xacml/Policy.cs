@@ -15,7 +15,7 @@ namespace Xacml
 
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
-            throw new NotImplementedException();
+            return CombiningAlgorithm.Evaluate(Rules, authorizationContext);
         }
     }
 }

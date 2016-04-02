@@ -15,7 +15,16 @@ namespace Xacml
 
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
-            throw new NotImplementedException();
+            return CombiningAlgorithm.Evaluate(GetEvaluators(), authorizationContext);
+        }
+
+        private IEnumerable<IDecisionEvaluator> GetEvaluators()
+        {
+            foreach (var policy in Policies)
+                yield return policy;
+
+            foreach (var policySet in PolicySets)
+                yield return policySet;
         }
     }
 }
