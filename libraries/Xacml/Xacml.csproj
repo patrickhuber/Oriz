@@ -57,6 +57,7 @@
     <Compile Include="CombiningAlgorithm.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Decision.cs" />
+    <Compile Include="ICombiningAlgorithm.cs" />
     <Compile Include="IDecisionEvaluator.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Matches\StringEqualIgnoreCaseMatch.cs" />

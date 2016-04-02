@@ -11,8 +11,8 @@ namespace Xacml
 
         public Target Target { get; set; }
 
-        public CombiningAlgorithm CombiningAlgorithm { get; set; }
-
+        public ICombiningAlgorithm CombiningAlgorithm { get; set; }
+        
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
             return CombiningAlgorithm.Evaluate(Rules, authorizationContext);

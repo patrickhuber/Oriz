@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Xacml
 {
-    public abstract class CombiningAlgorithm
+    public abstract class CombiningAlgorithm : ICombiningAlgorithm
     {
         public abstract Decision Evaluate(IEnumerable<IDecisionEvaluator> evaluators, AuthorizationContext context);
     }

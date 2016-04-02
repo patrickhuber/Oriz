@@ -11,7 +11,7 @@ namespace Xacml
 
         public ICollection<Policy> Policies { get; set; }
 
-        public CombiningAlgorithm CombiningAlgorithm { get; set; }
+        public ICombiningAlgorithm CombiningAlgorithm { get; set; }
 
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
