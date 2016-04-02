@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\DenyOverridesCombiningAlgorithm.cs" />
+    <Compile Include="Algorithms\PermitOverridesCombiningAlgorithm.cs" />
     <Compile Include="AllOf.cs" />
     <Compile Include="AnyOf.cs" />
     <Compile Include="Attribute.cs" />
@@ -54,11 +55,14 @@
     <Compile Include="AuthorizationRequest.cs" />
     <Compile Include="AuthorizationResponse.cs" />
     <Compile Include="CombiningAlgorithm.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Decision.cs" />
+    <Compile Include="ICombiningAlgorithm.cs" />
     <Compile Include="IDecisionEvaluator.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Matches\StringEqualIgnoreCaseMatch.cs" />
     <Compile Include="Matches\StringEqualMatch.cs" />
+    <Compile Include="MatchResult.cs" />
     <Compile Include="Policy.cs" />
     <Compile Include="PolicyDecisionPoint.cs" />
     <Compile Include="PolicyManagementPoint.cs" />

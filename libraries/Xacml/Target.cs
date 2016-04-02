@@ -6,12 +6,12 @@ namespace Xacml
     {
         public ICollection<AnyOf> AnyOf { get; set; }
 
-        public bool Evaluate(ICollection<AttributeCategory> attributeCategories)
+        public MatchResult Evaluate(AuthorizationContext authorizationContext)
         {
             foreach (var anyOf in AnyOf)
-                if (!anyOf.Evaluate(attributeCategories))
-                    return false;
-            return true;
+                if (anyOf.Evaluate(authorizationContext) == MatchResult.False)
+                    return MatchResult.False;
+            return MatchResult.True;
         }       
     }
 }

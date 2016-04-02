@@ -11,11 +11,20 @@ namespace Xacml
 
         public ICollection<Policy> Policies { get; set; }
 
-        public CombiningAlgorithm CombiningAlgorithm { get; set; }
+        public ICombiningAlgorithm CombiningAlgorithm { get; set; }
 
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
-            throw new NotImplementedException();
+            return CombiningAlgorithm.Evaluate(GetEvaluators(), authorizationContext);
+        }
+
+        private IEnumerable<IDecisionEvaluator> GetEvaluators()
+        {
+            foreach (var policy in Policies)
+                yield return policy;
+
+            foreach (var policySet in PolicySets)
+                yield return policySet;
         }
     }
 }

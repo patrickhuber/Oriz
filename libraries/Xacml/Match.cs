@@ -13,19 +13,19 @@ namespace Xacml
             Id = id;
         }
 
-        public bool Evaluate(ICollection<AttributeCategory> attributeCategories)
+        public MatchResult Evaluate(AuthorizationContext authorizationContext)
         {
-            foreach (var attributeCategory in attributeCategories)
-                if (Evaluate(attributeCategory))
-                    return true;
-            return false;
+            foreach (var attributeCategory in authorizationContext.AttributeCategories)
+                if (Evaluate(attributeCategory) == MatchResult.True)
+                    return MatchResult.True;
+            return MatchResult.False;
         }
 
-        private bool Evaluate(
+        private MatchResult Evaluate(
             AttributeCategory attributeCategory)
         {
             if (attributeCategory.Id != AttributeDesignator.Category)
-                return false;
+                return MatchResult.False;
 
             foreach (var attribute in attributeCategory.Attributes)
             {
@@ -33,9 +33,9 @@ namespace Xacml
                     return Evaluate(attribute);
             }
 
-            return false;
+            return MatchResult.False;
         }
 
-        protected abstract bool Evaluate(Attribute attribute);
+        protected abstract MatchResult Evaluate(Attribute attribute);
     }
 }

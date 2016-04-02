@@ -14,12 +14,15 @@ namespace Xacml.Matches
         {
         }
 
-        protected override bool Evaluate(Attribute attribute)
+        protected override MatchResult Evaluate(Attribute attribute)
         {
             foreach (var attributeValue in attribute.Values)
                 if (attributeValue.DataType == AttributeValue.DataType)
-                    return attributeValue.Value == AttributeValue.Value;
-            return false;
+                    return (attributeValue.Value == AttributeValue.Value)
+                        ? MatchResult.True
+                        : MatchResult.False;
+
+            return MatchResult.False;
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Xacml
 {
@@ -14,11 +11,11 @@ namespace Xacml
 
         public Target Target { get; set; }
 
-        public CombiningAlgorithm CombiningAlgorithm { get; set; }
-
+        public ICombiningAlgorithm CombiningAlgorithm { get; set; }
+        
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
-            throw new NotImplementedException();
+            return CombiningAlgorithm.Evaluate(Rules, authorizationContext);
         }
     }
 }
