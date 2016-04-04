@@ -9,11 +9,18 @@ namespace Xacml
     /// <summary>
     /// <see cref="http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html#_Toc297001161"/>
     /// </summary>
-    public class Rule : IDecisionEvaluator
+    public class Rule : IRule
     {
-        public string Id { get; set; }
-        public RuleEffect Effect { get; set; }
-        public Target Target { get; set; }
+        public string Id { get; private set; }
+        public RuleEffect Effect { get; private set; }
+        public Target Target { get; private set; }
+
+        public Rule(string id, RuleEffect effect, Target target)
+        {
+            Id = id;
+            Effect = effect;
+            Target = target;
+        }
 
         /// <summary>
         /// <see cref="http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html#_Toc325047188">Rule evaluation</see>
@@ -41,8 +48,7 @@ namespace Xacml
                 case MatchResult.Indeterminate:
                     if (Effect == RuleEffect.Permit)
                         return Decision.Indeterminate | Decision.Permit;
-                    else
-                        return Decision.Indeterminate | Decision.Deny;                
+                    return Decision.Indeterminate | Decision.Deny;                
             }
             throw new Exception("Invalid match result detected.");
         }

@@ -59,6 +59,9 @@
     <Compile Include="Decision.cs" />
     <Compile Include="ICombiningAlgorithm.cs" />
     <Compile Include="IDecisionEvaluator.cs" />
+    <Compile Include="IPolicy.cs" />
+    <Compile Include="IRule.cs" />
+    <Compile Include="ITarget.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Matches\StringEqualIgnoreCaseMatch.cs" />
     <Compile Include="Matches\StringEqualMatch.cs" />

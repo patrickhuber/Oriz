@@ -3,16 +3,27 @@ using System.Collections.Generic;
 
 namespace Xacml
 {
-    public class Policy : IDecisionEvaluator
+    public class Policy : IPolicy
     {
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
-        public ICollection<Rule> Rules { get; set; }
+        public ITarget Target { get; private set; }
 
-        public Target Target { get; set; }
+        public ICombiningAlgorithm CombiningAlgorithm { get; private set; }
 
-        public ICombiningAlgorithm CombiningAlgorithm { get; set; }
-        
+        public IEnumerable<IRule> Rules { get; private set; }
+
+        public Policy(string id, 
+            ITarget target, 
+            ICombiningAlgorithm combiningAlgorithm, 
+            IEnumerable<IRule> rules)
+        {
+            Id = id;
+            Target = target;
+            CombiningAlgorithm = combiningAlgorithm;
+            Rules = rules;
+        }
+
         public Decision Evaluate(AuthorizationContext authorizationContext)
         {
             return CombiningAlgorithm.Evaluate(Rules, authorizationContext);

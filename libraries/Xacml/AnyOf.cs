@@ -8,7 +8,16 @@ namespace Xacml
 {
     public class AnyOf
     {
-        public ICollection<AllOf> AllOf { get; set; }
+        public IEnumerable<AllOf> AllOf { get; private set; }
+
+        public AnyOf(IEnumerable<AllOf> allOf)
+        {
+            AllOf = allOf;
+        }
+
+        public AnyOf(params AllOf[] allOf)
+            : this(allOf as IEnumerable<AllOf>)
+        { }
 
         public MatchResult Evaluate(AuthorizationContext authorizationContext)
         {

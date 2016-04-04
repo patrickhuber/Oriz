@@ -4,13 +4,17 @@ namespace Xacml
 {
     public abstract class Match
     {
-        public AttributeValue AttributeValue { get; set; }
-        public AttributeDesignator AttributeDesignator { get; set; }
+        public AttributeValue AttributeValue { get; private set; }
+        public AttributeDesignator AttributeDesignator { get; private set; }
         public string Id { get; private set; }
 
-        protected Match(string id)
+        protected Match(string id, 
+            AttributeDesignator designator, 
+            AttributeValue value)
         {
             Id = id;
+            AttributeDesignator = designator;
+            AttributeValue = value;
         }
 
         public MatchResult Evaluate(AuthorizationContext authorizationContext)

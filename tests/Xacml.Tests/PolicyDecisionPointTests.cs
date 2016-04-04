@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xacml.Algorithms;
+using Xacml.Matches;
 
 namespace Xacml.Tests
 {
@@ -10,7 +12,16 @@ namespace Xacml.Tests
         {
             var policyManagementPoint = new PolicyManagementPoint();
             policyManagementPoint.Policies.Add(
-                new Policy { Id = "" });
+                new Policy(
+                    id: "urn:com.company.policies.can-read-own-medical-records",
+                    target: new Target(
+                        new AnyOf(
+                                new AllOf(
+                                    new StringEqualMatch(
+                                        new AttributeDesignator(),
+                                        new AttributeValue())))),
+                    combiningAlgorithm: new DenyOverridesCombiningAlgorithm(),
+                    rules: new IRule[] { }));
             var policyDecisionPoint = new PolicyDecisionPoint(policyManagementPoint);
 
             var authorizationResponse = policyDecisionPoint.Authorize(

@@ -2,9 +2,18 @@
 
 namespace Xacml
 {
-    public class Target
+    public class Target : ITarget
     {
-        public ICollection<AnyOf> AnyOf { get; set; }
+        public IEnumerable<AnyOf> AnyOf { get; private set; }
+
+        public Target(IEnumerable<AnyOf> anyOf)
+        {
+            AnyOf = anyOf;
+        }
+
+        public Target(params AnyOf[] anyOf)
+            : this(anyOf as IEnumerable<AnyOf>)
+        { }
 
         public MatchResult Evaluate(AuthorizationContext authorizationContext)
         {

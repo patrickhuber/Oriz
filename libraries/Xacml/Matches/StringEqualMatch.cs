@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Xacml.Matches
+﻿namespace Xacml.Matches
 {
     public class StringEqualMatch 
         : Match
     {
-        public StringEqualMatch() 
-            : base("urn:oasis:names:tc:xacml:1.0:function:string-equal")
+        public StringEqualMatch(AttributeDesignator designator, AttributeValue value) 
+            : base("urn:oasis:names:tc:xacml:1.0:function:string-equal", 
+                  designator, value)
         {
         }
 

@@ -4,8 +4,12 @@ namespace Xacml.Matches
 {
     public class StringEqualIgnoreCaseMatch : Match
     {
-        public StringEqualIgnoreCaseMatch()
-            : base("urn:oasis:names:tc:xacml:3.0:function:string-equal-ignore-case")
+        public StringEqualIgnoreCaseMatch(
+            AttributeDesignator designator, 
+            AttributeValue value)
+            : base("urn:oasis:names:tc:xacml:3.0:function:string-equal-ignore-case", 
+                  designator, 
+                  value)
         { }
 
         protected override MatchResult Evaluate(Attribute attribute)

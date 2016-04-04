@@ -4,7 +4,16 @@ namespace Xacml
 {
     public class AllOf
     {
-        public ICollection<Match> Matches { get; set; }
+        public IEnumerable<Match> Matches { get; private set; }
+
+        public AllOf(IEnumerable<Match> matches)
+        {
+            Matches = matches;
+        }
+
+        public AllOf(params Match[] matches)
+            : this(matches as IEnumerable<Match>)
+        { }
 
         public MatchResult Evaluate(AuthorizationContext authorizationContext)
         {
