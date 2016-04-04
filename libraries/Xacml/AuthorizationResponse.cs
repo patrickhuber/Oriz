@@ -8,6 +8,6 @@ namespace Xacml
 {
     public class AuthorizationResponse
     {
-        public ICollection<Result> Results { get; set; }
+        public IEnumerable<Result> Results { get; set; }
     }
 }

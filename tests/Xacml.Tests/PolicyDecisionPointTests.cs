@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using Xacml.Algorithms;
 using Xacml.Matches;
 
@@ -8,7 +9,7 @@ namespace Xacml.Tests
     public class PolicyDecisionPointTests
     {
         [TestMethod]
-        public void Test_PolicyDecisionPoint_That_Read_Medical_Record_Pulls_Policy_From_PMP()
+        public void PolicyDecisionPointShouldAllowReadForAllMedicalRecords()
         {
             var policyManagementPoint = new PolicyManagementPoint();
             policyManagementPoint.Policies.Add(
@@ -48,6 +49,10 @@ namespace Xacml.Tests
                                 new AttributeValue(
                                     dataType: Constants.DataType.String,
                                     value: "read"))))));
+
+            Assert.IsNotNull(authorizationResponse);
+            Assert.AreEqual(1, authorizationResponse.Results.Count());
+            Assert.AreEqual(authorizationResponse.Results.First().Decision, Decision.Permit);
         }
     }
 }
