@@ -22,11 +22,26 @@ namespace Xacml
             public static readonly string ActionId = "urn:oasis:names:tc:xacml:1.0:action:action-id";
         }
 
-        public static class DataType
-        {
-            public static readonly string Rfc822Name = "urn:oasis:names:tc:xacml:1.0:data-type:rfc822Name";
-            public static readonly string AnyUri = "http://www.w3.org/2001/XMLSchema#anyURI";
-            public static readonly string String = "http://www.w3.org/2001/XMLSchema#string";
-        }
+               
+    }
+
+    public static class DataType
+    {
+        public static readonly string Rfc822Name = "urn:oasis:names:tc:xacml:1.0:data-type:rfc822Name";
+        public static readonly string AnyUri = "http://www.w3.org/2001/XMLSchema#anyURI";
+        public static readonly string String = "http://www.w3.org/2001/XMLSchema#string";
+    }
+
+    public static class Resource
+    {
+        public static readonly string Id = "urn:oasis:names:tc:xacml:1.0:resource:resource-id";
+        public static readonly string TargetNamespace = "urn:oasis:names:tc:xacml:2.0:resource:target-namespace";
+    }
+
+    public static class Action
+    {
+        public static readonly string Id = "urn:oasis:names:tc:xacml:1.0:action:action-id";
+        public static readonly string ImpliedAction = "urn:oasis:names:tc:xacml:1.0:action:implied-action";
+        public static readonly string Namespace = "urn:oasis:names:tc:xacml:1.0:action:action-namespace";
     }
 }

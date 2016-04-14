@@ -20,13 +20,14 @@ namespace Xacml
             var policies = PolicyManagementPoint.GetApplicablePolicies(request.AuthorizationContext);
             var policySets = PolicyManagementPoint.GetApplicablePolicySets(request.AuthorizationContext);
 
-            var authorizationResponse = new AuthorizationResponse();
-            authorizationResponse.Results = new List<Result>();
+            
+            var results = new List<Result>();
             foreach (var policySet in policySets)
-                authorizationResponse.Results.Add(new Result { Decision = policySet.Evaluate(request.AuthorizationContext) });
+                results.Add(new Result { Decision = policySet.Evaluate(request.AuthorizationContext) });
             foreach (var policy in policies)
-                authorizationResponse.Results.Add(new Result { Decision = policy.Evaluate(request.AuthorizationContext) });
-            return authorizationResponse;
+                results.Add(new Result { Decision = policy.Evaluate(request.AuthorizationContext) });
+
+            return new AuthorizationResponse { Results = results };
         }
     }
 }
