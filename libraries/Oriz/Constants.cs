@@ -5,24 +5,18 @@ using System.Text;
 
 namespace Oriz
 {
-    public static class Constants
+    public static class Attributes
     {
-        public static class Category
-        {
-            public static readonly string AccessSubject = "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject";
-            public static readonly string Resource = "urn:oasis:names:tc:xacml:3.0:attribute-category:resource";
-            public static readonly string Action = "urn:oasis:names:tc:xacml:3.0:attribute-category:action";
-            
-        }
+        public static readonly string SubjectId = "urn:oasis:names:tc:xacml:1.0:subject:subject-id";
+        public static readonly string ResourceId = "urn:oasis:names:tc:xacml:1.0:resource:resource-id";
+        public static readonly string ActionId = "urn:oasis:names:tc:xacml:1.0:action:action-id";
+    }
 
-        public static class Attribute
-        {
-            public static readonly string SubjectId = "urn:oasis:names:tc:xacml:1.0:subject:subject-id";
-            public static readonly string ResourceId = "urn:oasis:names:tc:xacml:1.0:resource:resource-id";
-            public static readonly string ActionId = "urn:oasis:names:tc:xacml:1.0:action:action-id";
-        }
-
-               
+    public static class Categories
+    {
+        public static readonly string AccessSubject = "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject";
+        public static readonly string Resource = "urn:oasis:names:tc:xacml:3.0:attribute-category:resource";
+        public static readonly string Action = "urn:oasis:names:tc:xacml:3.0:attribute-category:action";
     }
 
     public static class DataType

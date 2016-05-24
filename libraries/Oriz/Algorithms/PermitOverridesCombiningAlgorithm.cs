@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Oriz.Evaluators;
+using Oriz.Schema;
+using System;
 using System.Collections.Generic;
 
 namespace Oriz.Algorithms
@@ -8,6 +10,9 @@ namespace Oriz.Algorithms
     /// </summary>
     public class PermitOverridesCombiningAlgorithm : CombiningAlgorithm
     {
+        public PermitOverridesCombiningAlgorithm() 
+            : base("urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides") { }
+
         public override Decision Evaluate(IEnumerable<IDecisionEvaluator> evaluators, AuthorizationContext context)
         {
             var atLeastOneErrorD = false;

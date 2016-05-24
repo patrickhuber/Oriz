@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using Oriz.Algorithms;
-using Oriz.Matches;
+using Oriz.Schema;
+using Oriz.Services;
 
 namespace Oriz.Tests
 {
@@ -18,39 +19,40 @@ namespace Oriz.Tests
                     target: new Target(
                         new AnyOf(
                                 new AllOf(
-                                    new StringEqualMatch(
+                                    new Match(
+                                        "",
                                         new AttributeDesignator(
-                                            Constants.Category.Resource, 
+                                            Categories.Resource, 
                                             Resource.TargetNamespace,
                                             DataType.AnyUri),
                                         new AttributeValue(
                                             DataType.AnyUri,
                                             ""))))),
-                    combiningAlgorithm: new DenyOverridesCombiningAlgorithm(),
-                    rules: new IRule[] { }));
-            var policyDecisionPoint = new PolicyDecisionPoint(policyManagementPoint);
+                    combiningAlgorithmId: "",
+                    rules: new Rule[] { }));
+            var policyDecisionPoint = new PolicyDecisionPoint(policyManagementPoint, null);
 
             var authorizationResponse = policyDecisionPoint.Authorize(
                 new AuthorizationRequest(
                     new AuthorizationContext(
                         new AttributeCategory(
-                            Constants.Category.AccessSubject,
+                            Categories.AccessSubject,
                             new Attribute(
-                                Constants.Attribute.SubjectId,
+                                Attributes.SubjectId,
                                 new AttributeValue(
                                     dataType: DataType.Rfc822Name,
                                     value: "bs@simpsons.com"))),
                         new AttributeCategory(
-                            Constants.Category.Resource,
+                            Categories.Resource,
                             new Attribute(
-                                Constants.Attribute.ResourceId,
+                                Attributes.ResourceId,
                                 new AttributeValue(
                                     dataType: DataType.AnyUri,
                                     value: "urn:simple:medical:record:12345"))),
                         new AttributeCategory(
-                            Constants.Category.Action,
+                            Categories.Action,
                             new Attribute(
-                                Constants.Attribute.ActionId,
+                                Attributes.ActionId,
                                 new AttributeValue(
                                     dataType: DataType.String,
                                     value: "read"))))));

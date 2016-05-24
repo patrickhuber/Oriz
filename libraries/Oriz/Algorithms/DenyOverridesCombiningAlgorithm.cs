@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Oriz.Evaluators;
+using Oriz.Schema;
+using System;
 using System.Collections.Generic;
 
 namespace Oriz.Algorithms
@@ -8,6 +10,10 @@ namespace Oriz.Algorithms
     /// </summary>
     public class DenyOverridesCombiningAlgorithm : CombiningAlgorithm
     {
+        public DenyOverridesCombiningAlgorithm()
+            : base("urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:deny-overrides")
+        { }
+
         public override Decision Evaluate(IEnumerable<IDecisionEvaluator> evaluators, AuthorizationContext context)
         {
             bool atLeastOneErrorD = false;
