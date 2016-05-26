@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Oriz.Algorithms
+namespace Oriz.DataTypes
 {
-    public class CombiningAlgorithmRegistry : RegistryBase<ICombiningAlgorithm>
+    class X500NameType
     {
     }
 }

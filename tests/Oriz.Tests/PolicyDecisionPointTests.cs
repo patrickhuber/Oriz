@@ -22,11 +22,11 @@ namespace Oriz.Tests
                                     new Match(
                                         "",
                                         new AttributeDesignator(
-                                            Categories.Resource, 
-                                            Resource.TargetNamespace,
-                                            DataType.AnyUri),
+                                            Identifiers.Categories.Resource,
+                                            Identifiers.Resources.TargetNamespace,
+                                            Identifiers.DataTypes.AnyUri),
                                         new AttributeValue(
-                                            DataType.AnyUri,
+                                            Identifiers.DataTypes.AnyUri,
                                             ""))))),
                     combiningAlgorithmId: "",
                     rules: new Rule[] { }));
@@ -36,25 +36,25 @@ namespace Oriz.Tests
                 new AuthorizationRequest(
                     new AuthorizationContext(
                         new AttributeCategory(
-                            Categories.AccessSubject,
+                            Identifiers.Categories.AccessSubject,
                             new Attribute(
-                                Attributes.SubjectId,
+                                Identifiers.Attributes.SubjectId,
                                 new AttributeValue(
-                                    dataType: DataType.Rfc822Name,
+                                    dataType: Identifiers.DataTypes.Rfc822Name,
                                     value: "bs@simpsons.com"))),
                         new AttributeCategory(
-                            Categories.Resource,
+                            Identifiers.Categories.Resource,
                             new Attribute(
-                                Attributes.ResourceId,
+                                Identifiers.Attributes.ResourceId,
                                 new AttributeValue(
-                                    dataType: DataType.AnyUri,
+                                    dataType: Identifiers.DataTypes.AnyUri,
                                     value: "urn:simple:medical:record:12345"))),
                         new AttributeCategory(
-                            Categories.Action,
+                            Identifiers.Categories.Action,
                             new Attribute(
-                                Attributes.ActionId,
+                                Identifiers.Attributes.ActionId,
                                 new AttributeValue(
-                                    dataType: DataType.String,
+                                    dataType: Identifiers.DataTypes.String,
                                     value: "read"))))));
 
             Assert.IsNotNull(authorizationResponse);

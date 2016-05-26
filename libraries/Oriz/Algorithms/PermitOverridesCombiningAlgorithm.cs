@@ -22,7 +22,7 @@ namespace Oriz.Algorithms
 
             foreach (var evaluator in evaluators)
             {
-                Decision decision = evaluator.Evaluate(context);
+                var decision = evaluator.Evaluate(context);
                 switch (decision)
                 {
                     case Decision.Deny:

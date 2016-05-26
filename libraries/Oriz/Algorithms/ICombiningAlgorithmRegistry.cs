@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Oriz.Algorithms
 {
-    public class CombiningAlgorithmRegistry : RegistryBase<ICombiningAlgorithm>
+    public interface ICombiningAlgorithmRegistry : IRegistry<ICombiningAlgorithm>
     {
     }
 }

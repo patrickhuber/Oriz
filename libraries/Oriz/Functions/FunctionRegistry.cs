@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Oriz.Algorithms
+namespace Oriz.Functions
 {
-    public class CombiningAlgorithmRegistry : RegistryBase<ICombiningAlgorithm>
+    public class FunctionRegistry : RegistryBase<IFunction>
     {
     }
 }

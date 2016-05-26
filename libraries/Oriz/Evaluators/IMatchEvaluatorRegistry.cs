@@ -5,9 +5,7 @@ using System.Text;
 
 namespace Oriz.Evaluators
 {
-    public interface IMatchEvaluatorRegistry
+    public interface IMatchEvaluatorRegistry : IRegistry<IMatchEvaluator>
     {
-        void Register(IMatchEvaluator match);
-        IMatchEvaluator Get(string id);
     }
 }

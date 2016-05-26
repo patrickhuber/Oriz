@@ -3,9 +3,8 @@ using Oriz.Schema;
 
 namespace Oriz.Evaluators
 {
-    public interface IMatchEvaluator 
+    public interface IMatchEvaluator  : IEntity
     {
-        string Id { get; }
         MatchResult Evaluate(Match match, AuthorizationContext authorizationContext);
     }
 }

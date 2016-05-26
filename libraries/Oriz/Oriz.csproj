@@ -45,10 +45,35 @@
   <ItemGroup>
     <Compile Include="Algorithms\DenyOverridesCombiningAlgorithm.cs" />
     <Compile Include="Algorithms\CombiningAlgorithmRegistry.cs" />
+    <Compile Include="Algorithms\ICombiningAlgorithmRegistry.cs" />
     <Compile Include="Algorithms\PermitOverridesCombiningAlgorithm.cs" />
+    <Compile Include="DataTypes\AnyUriType.cs" />
+    <Compile Include="DataTypes\Base64BinaryType.cs" />
+    <Compile Include="DataTypes\BooleanType.cs" />
+    <Compile Include="DataTypes\DateTimeDurationType.cs" />
+    <Compile Include="DataTypes\DateTimeType.cs" />
+    <Compile Include="DataTypes\DateType.cs" />
+    <Compile Include="DataTypes\DnsNameType.cs" />
+    <Compile Include="DataTypes\DoubleType.cs" />
+    <Compile Include="DataTypes\HexBinaryType.cs" />
+    <Compile Include="DataTypes\IntegerType.cs" />
+    <Compile Include="DataTypes\IpAddressType.cs" />
+    <Compile Include="DataTypes\Rfc822NameType.cs" />
+    <Compile Include="DataTypes\StringType.cs" />
+    <Compile Include="DataTypes\TimeType.cs" />
+    <Compile Include="DataTypes\X500NameType.cs" />
+    <Compile Include="DataTypes\XPathExpressionType.cs" />
+    <Compile Include="DataTypes\YearMonthDurationType.cs" />
     <Compile Include="Evaluators\IPolicyEvaluator.cs" />
     <Compile Include="Evaluators\ITargetEvaluator.cs" />
     <Compile Include="Evaluators\TargetEvaluator.cs" />
+    <Compile Include="Functions\FunctionBase.cs" />
+    <Compile Include="Functions\FunctionRegistry.cs" />
+    <Compile Include="Functions\IFunction.cs" />
+    <Compile Include="HashUtil.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="IRegistry.cs" />
+    <Compile Include="RegistryBase.cs" />
     <Compile Include="Schema\AllOf.cs" />
     <Compile Include="Schema\AnyOf.cs" />
     <Compile Include="Schema\Attribute.cs" />
@@ -59,9 +84,8 @@
     <Compile Include="Services\AuthorizationRequest.cs" />
     <Compile Include="Services\AuthorizationResponse.cs" />
     <Compile Include="Algorithms\CombiningAlgorithm.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="Identifiers.cs" />
     <Compile Include="Schema\Decision.cs" />
-    <Compile Include="Functions\StringEqualFunction.cs" />
     <Compile Include="Algorithms\ICombiningAlgorithm.cs" />
     <Compile Include="Evaluators\IDecisionEvaluator.cs" />
     <Compile Include="Schema\Match.cs" />
@@ -82,9 +106,7 @@
     <Compile Include="Schema\RuleEffect.cs" />
     <Compile Include="Schema\Target.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataTypes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

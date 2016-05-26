@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 namespace Oriz
 {
-    public interface ICombiningAlgorithm
+    public interface ICombiningAlgorithm : IEntity
     {
-        string Id { get; }
         Decision Evaluate(IEnumerable<IDecisionEvaluator> evaluators, AuthorizationContext context);
     }
 }

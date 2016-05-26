@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Oriz.Algorithms
+namespace Oriz
 {
-    public class CombiningAlgorithmRegistry : RegistryBase<ICombiningAlgorithm>
+    public interface IEntity
     {
+        string Id { get; }
     }
 }

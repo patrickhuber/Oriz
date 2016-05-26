@@ -16,10 +16,10 @@ namespace Oriz.Algorithms
 
         public override Decision Evaluate(IEnumerable<IDecisionEvaluator> evaluators, AuthorizationContext context)
         {
-            bool atLeastOneErrorD = false;
-            bool atLeastOneErrorP = false;
-            bool atLeastOneErrorDP = false;
-            bool atLeastOnePermit = false;
+            var atLeastOneErrorD = false;
+            var atLeastOneErrorP = false;
+            var atLeastOneErrorDP = false;
+            var atLeastOnePermit = false;
 
             foreach (var decisionEvaluator in evaluators)
             {
